@@ -93,6 +93,12 @@ const JobRequirement = () => {
     dispatch(action(event.target.value));
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleSuivant = (event: any) => {
+    event.preventDefault();
+    navigate("/questionnaire");
+  };
+
   return (
     <div className="job-req">
       <div className="job-req_title">
@@ -203,7 +209,7 @@ const JobRequirement = () => {
           >
             Retour
           </Button>
-          <Button type="submit" variant="contained">
+          <Button onClick={handleSuivant} type="submit" variant="contained">
             Suivant
           </Button>
         </div>

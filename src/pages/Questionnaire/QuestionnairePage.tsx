@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import QuestionComponent from "../../components/question/QuestionComponent";
 import { Box, Button } from "@mui/material";
 import "./QuestionnairePage.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useStore } from "react-redux";
 import { addQuestion } from "../../store/qcm-form/qcmSlice";
 import { Question } from "../../types/QuestionClass";
+import { RootState } from "../../store/store";
 
 const QuestionnairePage = () => {
   const dispatch = useDispatch();
@@ -43,12 +44,30 @@ const QuestionnairePage = () => {
     dispatch(addQuestion(new Question(questionList.length + 1)));
   };
 
+  const store = useStore();
+
+  const handleValider = () => {
+    const jobInfo = (store.getState() as RootState).annonceForm;
+    const jobCritere = (store.getState() as RootState).jobCritere;
+    const jobQcm = (store.getState() as RootState).qcmReducer;
+
+    console.log(
+      JSON.stringify({
+        jobInfo: jobInfo,
+        jobCritere: jobCritere,
+        qcm: jobQcm,
+      })
+    );
+  };
+
   return (
     <Box className="questions_container">
       <h1>Questions pour le test</h1>
       {questionList}
       <a onClick={handleClick}> Ajouter une autre question </a>
-      <Button onClick={() => console.log(questionList)}>Voir questions</Button>
+      <Button variant="contained" onClick={handleValider}>
+        Valider
+      </Button>
     </Box>
   );
 };

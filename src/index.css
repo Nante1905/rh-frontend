@@ -6,3 +6,15 @@
 html {
   font-family: Montserrat;
 }
+
+a {
+  color: #646cff;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: inherit;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #000000;
+}

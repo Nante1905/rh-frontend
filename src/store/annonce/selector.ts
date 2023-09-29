@@ -11,3 +11,7 @@ export const getExperience = (state: RootState) => state.jobCritere.experience;
 export const getNationalite = (state: RootState) =>
   state.jobCritere.nationalite;
 export const getGenre = (state: RootState) => state.jobCritere.genre;
+
+export const getJobInfo = (state: RootState) => state.annonceForm;
+export const getJobCritere = (state: RootState) => state.jobCritere;
+export const getQuestionnaire = (state: RootState) => state.qcmReducer;

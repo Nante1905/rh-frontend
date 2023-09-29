@@ -9,6 +9,7 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import JobInfo from "./components/form-annonce/job-info/job-info.component.tsx";
 import JobRequirement from "./components/form-annonce/job-requirement/job-requirement.component.tsx";
+import QuestionnairePage from "./pages/Questionnaire/QuestionnairePage.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const routes = createBrowserRouter([
       {
         path: "/critere",
         element: <JobRequirement />,
+      },
+      {
+        path: "/questionnaire",
+        element: <QuestionnairePage />,
       },
     ],
   },
