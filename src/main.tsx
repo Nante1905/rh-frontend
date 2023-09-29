@@ -10,6 +10,7 @@ import { createTheme } from "@mui/material";
 import JobInfo from "./components/form-annonce/job-info/job-info.component.tsx";
 import JobRequirement from "./components/form-annonce/job-requirement/job-requirement.component.tsx";
 import QuestionnairePage from "./pages/Questionnaire/QuestionnairePage.tsx";
+import FormCv from "./components/form-cv/form-cv.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const routes = createBrowserRouter([
       {
         path: "/questionnaire",
         element: <QuestionnairePage />,
+      },
+      {
+        path: "cv/create",
+        element: <FormCv />,
       },
     ],
   },

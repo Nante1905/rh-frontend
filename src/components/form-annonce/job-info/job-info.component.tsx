@@ -55,67 +55,69 @@ const JobInfo = () => {
   };
 
   return (
-    <div className="job-info">
-      <div className="job-info_title">
-        <h1>Expression des besoins</h1>
+    <div className="bg__blue main__container">
+      <div className="job-info">
+        <div className="job-info_title">
+          <h1>Expression des besoins</h1>
+        </div>
+        <form onSubmit={handleSuivant}>
+          <div className="job-info_head">
+            <TextField
+              variant="outlined"
+              label="Nom du poste"
+              onChange={(event) => handleChangeInput(event, setJobTile)}
+            />
+            <ServiceSelect
+              option={services}
+              selectLabel="Service"
+              selectValue={selectedValue}
+              onChange={handleChangeSelect}
+            />
+          </div>
+          <div className="job-info_hour">
+            <TextField
+              variant="outlined"
+              label="Volume horaire"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">Heure</InputAdornment>
+                ),
+              }}
+              onChange={(event) => handleChangeInput(event, setVolumeHoraire)}
+            />
+            <br />
+            <TextField
+              variant="outlined"
+              label="Taux homme-jour"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">Homme/jr</InputAdornment>
+                ),
+              }}
+              onChange={(event) => handleChangeInput(event, setTauxHJ)}
+            />
+          </div>
+          <div className="job-info_salary">
+            <TextField
+              variant="outlined"
+              label="Salaire min"
+              type="number"
+              onChange={(event) => handleChangeInput(event, setSalaireMin)}
+            />
+            <TextField
+              variant="outlined"
+              label="Salaire max"
+              type="number"
+              onChange={(event) => handleChangeInput(event, setSalaireMax)}
+            />
+          </div>
+          <div className="job-info_next-button">
+            <Button type="submit" variant="contained">
+              Suivant
+            </Button>
+          </div>
+        </form>
       </div>
-      <form onSubmit={handleSuivant}>
-        <div className="job-info_head">
-          <TextField
-            variant="outlined"
-            label="Nom du poste"
-            onChange={(event) => handleChangeInput(event, setJobTile)}
-          />
-          <ServiceSelect
-            option={services}
-            selectLabel="Service"
-            selectValue={selectedValue}
-            onChange={handleChangeSelect}
-          />
-        </div>
-        <div className="job-info_hour">
-          <TextField
-            variant="outlined"
-            label="Volume horaire"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">Heure</InputAdornment>
-              ),
-            }}
-            onChange={(event) => handleChangeInput(event, setVolumeHoraire)}
-          />
-          <br />
-          <TextField
-            variant="outlined"
-            label="Taux homme-jour"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">Homme/jr</InputAdornment>
-              ),
-            }}
-            onChange={(event) => handleChangeInput(event, setTauxHJ)}
-          />
-        </div>
-        <div className="job-info_salary">
-          <TextField
-            variant="outlined"
-            label="Salaire min"
-            type="number"
-            onChange={(event) => handleChangeInput(event, setSalaireMin)}
-          />
-          <TextField
-            variant="outlined"
-            label="Salaire max"
-            type="number"
-            onChange={(event) => handleChangeInput(event, setSalaireMax)}
-          />
-        </div>
-        <div className="job-info_next-button">
-          <Button type="submit" variant="contained">
-            Suivant
-          </Button>
-        </div>
-      </form>
     </div>
   );
 };

@@ -1,0 +1,35 @@
+@import "../../variables.module.scss";
+
+.title {
+    text-align: center;
+    padding: 3% 0%;
+}
+
+.cv__form {
+    min-height: 100vh;
+    background-color: aliceblue;
+    
+    &__card {
+        padding: 2%;
+        width: 50%;
+        margin: auto;
+
+        form {
+            width: 80%;
+            margin: auto;
+        }
+    }
+
+    &__element {
+        margin: 5% 0%;
+    }
+
+    .flex {
+        display:  flex;
+        justify-content: space-between;
+    }
+
+    .btn__upload {
+        background-color: $theme-color;
+    }
+}
