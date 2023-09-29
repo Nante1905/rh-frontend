@@ -1,0 +1,33 @@
+.job-req {
+  &_title {
+    text-align: center;
+    margin-bottom: 2%;
+    margin-top: 4%;
+  }
+
+  &_form-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    margin-block: 3%;
+  }
+
+  .radio-group {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  &_next-button {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  form {
+    width: 50%;
+    margin: auto;
+    padding: 5%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+}
