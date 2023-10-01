@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import "./form-cs.scss";
 import React, { ChangeEvent, useState } from "react";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import axios from "axios";
 import { env } from "../../env";
 
@@ -97,7 +96,7 @@ const FormCV = () => {
     axios
       .post(
         `${env.apiUrl}/cv/create`,
-        { formData },
+        { info },
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -168,7 +167,7 @@ const FormCV = () => {
             />
           </div>
           <div className="cv__form__element flex ">
-            <div>
+            {/* <div>
               <Button
                 component="label"
                 variant="contained"
@@ -183,8 +182,8 @@ const FormCV = () => {
                 />
               </Button>
               {cv ? <p>{cv.name}</p> : <p>Aucun fichier pdf importé</p>}
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
               <Button
                 component="label"
                 variant="contained"
@@ -203,7 +202,7 @@ const FormCV = () => {
               ) : (
                 <p>Aucun fichier pdf importé</p>
               )}
-            </div>
+            </div> */}
           </div>
           {/* Snackbar for UPLOAD ERROR */}
           <Snackbar
