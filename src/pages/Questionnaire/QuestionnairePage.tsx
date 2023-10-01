@@ -8,9 +8,11 @@ import { addQuestion } from "../../store/qcm-form/qcmSlice";
 import { Question } from "../../types/QuestionClass";
 import { RootState } from "../../store/store";
 import { buildFormAnnonceData } from "../../helpers/JobHelpers";
+import { useNavigate } from "react-router-dom";
 
 const QuestionnairePage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const removeQuestion = (id: number, index: number) => {
     // const index = questionList.findIndex((q) => q.props.numero == id);
@@ -60,9 +62,19 @@ const QuestionnairePage = () => {
       <h1>Questions pour le test</h1>
       {questionList}
       <a onClick={handleClick}> Ajouter une autre question </a>
-      <Button variant="contained" onClick={handleValider}>
-        Valider
-      </Button>
+      <div className="questions_container__btn">
+        <Button
+          variant="outlined"
+          onClick={() => {
+            navigate("/critere");
+          }}
+        >
+          Retour
+        </Button>
+        <Button variant="contained" onClick={handleValider}>
+          Valider
+        </Button>
+      </div>
     </Box>
   );
 };

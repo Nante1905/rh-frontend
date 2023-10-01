@@ -3,6 +3,10 @@
   src: url("./assets/Montserrat-Regular.ttf");
 }
 
+body {
+  margin: 0;
+}
+
 html {
   font-family: Montserrat;
 }

@@ -5,4 +5,11 @@
     row-gap: 1rem;
     background-color: aliceblue;
     min-height: 100vh;
+    margin-bottom: 2%;
+
+    &__btn {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+    }
 }
