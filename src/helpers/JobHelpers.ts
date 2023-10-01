@@ -1,10 +1,12 @@
 import { JobDetail } from "../components/form-annonce/types/JobCriteria";
 import { AnnonceForm } from "../store/annonce/annonceSlice";
 import { JobCritere } from "../store/annonce/critereSlice";
+import { QcmInterface } from "../store/qcm-form/qcmSlice";
 
 export const buildFormAnnonceData = (
   jobInfo: AnnonceForm,
-  jobCritere: JobCritere
+  jobCritere: JobCritere,
+  jobQcm: QcmInterface
 ): JobDetail | undefined => {
   const data: JobDetail = {
     title: jobInfo.jobTitle,
@@ -13,7 +15,7 @@ export const buildFormAnnonceData = (
     sal_min: jobInfo.salaireMin,
     sal_max: jobInfo.salaireMax,
     service: {
-      idService: jobInfo.service,
+      id: jobInfo.service,
     },
     jobDiplome: {
       diplome: {
@@ -45,6 +47,9 @@ export const buildFormAnnonceData = (
       },
       coeff: jobCritere.genreCoef,
     },
+    questionnaire: {
+      questions: jobQcm.questions
+    }
   };
   return data;
 };

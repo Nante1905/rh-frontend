@@ -2,7 +2,7 @@ import { Button, InputAdornment, SelectChangeEvent } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import "./job-info.components.scss";
 import ServiceSelect from "./service-select/service-select.component";
-import { Service } from "../types/Service";
+import { Service } from "../types/JobCriteria";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setJobTile,

@@ -58,7 +58,7 @@ const QuestionnairePage = () => {
     axios
       .post(
         "http://localhost:8080/test/save",
-        buildFormAnnonceData(jobInfo, jobCritere),
+        buildFormAnnonceData(jobInfo, jobCritere, jobQcm),
         {
           headers: {
             "Content-Type": "application/json",

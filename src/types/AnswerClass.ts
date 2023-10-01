@@ -1,6 +1,6 @@
 export default class AnswerClass {
-    id!: number;
-    text: string = "";
+    index!: number;
+    contenu: string = "";
     value: boolean = false;
 
 }

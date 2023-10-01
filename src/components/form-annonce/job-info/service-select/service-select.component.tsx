@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { Service } from "../../types/Service";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ServiceSelect = ({ option, selectLabel, selectValue, onChange }: any) => {
@@ -13,7 +13,7 @@ const ServiceSelect = ({ option, selectLabel, selectValue, onChange }: any) => {
         label={selectLabel}
         onChange={onChange}
       >
-        {option.map((e: Service) => (
+        {option.map((e: any) => (
           <MenuItem key={e.id} value={e.id}>
             {e.name}
           </MenuItem>

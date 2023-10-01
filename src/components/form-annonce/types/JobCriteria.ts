@@ -1,3 +1,5 @@
+import { Question } from "../../../types/QuestionClass";
+
 interface Diplome {
   id: number;
 }
@@ -37,8 +39,13 @@ interface JobSex {
   coeff: number;
 }
 
-interface Service {
-  idService: number;
+export interface Service {
+  id: number;
+  name?: string;
+}
+
+export interface Questionnaire {
+  questions: Question[]
 }
 
 export interface JobDetail {
@@ -53,4 +60,5 @@ export interface JobDetail {
   jobMatrimoniale: JobMatrimoniale;
   jobNationalite: JobNationalite;
   jobSexe: JobSex;
+  questionnaire: Questionnaire
 }

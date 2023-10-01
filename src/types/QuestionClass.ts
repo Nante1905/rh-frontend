@@ -1,15 +1,15 @@
 import AnswerClass from "./AnswerClass"
 
 export class Question {
-    id: number
-    text: string = ''
+    index: number
+    contenu: string = ''
     coeff: number = 1
-    answers: AnswerClass[] = []
+    reponses: AnswerClass[] = []
 
     constructor(id: number) {
-        this.id = id;
+        this.index = id;
         const answer = new AnswerClass();
-        answer.id = 1;
-        this.answers = [answer]
+        answer.index = 1;
+        this.reponses = [answer]
     }
 }
