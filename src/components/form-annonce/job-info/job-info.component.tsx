@@ -65,12 +65,14 @@ const JobInfo = () => {
             variant="outlined"
             label="Nom du poste"
             onChange={(event) => handleChangeInput(event, setJobTile)}
+            required
           />
           <ServiceSelect
             option={services}
             selectLabel="Service"
             selectValue={selectedValue}
             onChange={handleChangeSelect}
+            required
           />
         </div>
         <div className="job-info_hour">
@@ -83,6 +85,7 @@ const JobInfo = () => {
               ),
             }}
             onChange={(event) => handleChangeInput(event, setVolumeHoraire)}
+            required
           />
           <br />
           <TextField
@@ -94,6 +97,7 @@ const JobInfo = () => {
               ),
             }}
             onChange={(event) => handleChangeInput(event, setTauxHJ)}
+            required
           />
         </div>
         <div className="job-info_salary">
@@ -102,12 +106,14 @@ const JobInfo = () => {
             label="Salaire min"
             type="number"
             onChange={(event) => handleChangeInput(event, setSalaireMin)}
+            required
           />
           <TextField
             variant="outlined"
             label="Salaire max"
             type="number"
             onChange={(event) => handleChangeInput(event, setSalaireMax)}
+            required
           />
         </div>
         <div className="job-info_next-button">
