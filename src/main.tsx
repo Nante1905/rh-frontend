@@ -9,7 +9,8 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import JobInfo from "./components/form-annonce/job-info/job-info.component.tsx";
 import JobRequirement from "./components/form-annonce/job-requirement/job-requirement.component.tsx";
-import QuestionnairePage from "./pages/Questionnaire/QuestionnairePage.tsx";
+import Login from "./components/login/login.component.tsx";
+import AnnonceRoot from "./components/annonce/annonce-root/annonceRoot.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const routes = createBrowserRouter([
       {
         path: "/questionnaire",
         element: <QuestionnairePage />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/annonce",
+        element: <AnnonceRoot />,
       },
     ],
   },
