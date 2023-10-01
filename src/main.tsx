@@ -9,6 +9,8 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import JobInfo from "./components/form-annonce/job-info/job-info.component.tsx";
 import JobRequirement from "./components/form-annonce/job-requirement/job-requirement.component.tsx";
+import Login from "./components/login/login.component.tsx";
+import Annonce from "./components/annonce/annonce.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -27,6 +29,15 @@ const routes = createBrowserRouter([
         path: "/critere",
         element: <JobRequirement />,
       },
+      {
+        path: "/login",
+        element: <Login/>,
+      },
+      {
+        path: "/annonce",
+        element: <Annonce/>,
+      }
+      
     ],
   },
 ]);

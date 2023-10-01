@@ -1,0 +1,54 @@
+.login {
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2%;
+      margin-top: 4%;
+      font-family: Georgia, 'Popplins', sans-serif;
+    }
+  
+    form {
+      width: 20%;
+      height: 30%;
+      margin: auto;
+      padding: 5%;
+      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+    }
+  
+    
+    input {
+        margin-top: 0px;
+      width: 100%;
+      border: 2px solid #317B93;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+  
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #317B93;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    p {
+
+        text-align: center;
+        margin: 20px 0 15px;
+        text-decoration: underline;
+    }
+       
+    p a{
+
+        text-decoration: none;
+        font-weight: 600;
+    }
+        
+    p a:hover{
+        text-decoration: underline;
+    }
+}
