@@ -1,3 +1,7 @@
+.main__container {
+  background-color: aliceblue;
+}
+
 .job-info {
   width: 50%;
   margin: auto;
@@ -7,13 +11,11 @@
     margin-block: 2%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: white;
-    margin-bottom: 5%;
   }
 
   &_title {
     text-align: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    padding: 5%;
   }
   &_head {
     display: flex;

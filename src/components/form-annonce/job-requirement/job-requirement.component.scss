@@ -1,11 +1,9 @@
-body {
-  background-color: aliceblue;
-}
 .job-req {
+  background-color: aliceblue;
+
   &_title {
     text-align: center;
-    margin-bottom: 2%;
-    margin-top: 4%;
+    padding: 3% 0%;
   }
 
   &_form-control {
@@ -33,6 +31,5 @@ body {
     padding: 5%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: white;
-    margin-bottom: 5%;
   }
 }

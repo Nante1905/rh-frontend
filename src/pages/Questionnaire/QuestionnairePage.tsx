@@ -71,8 +71,8 @@ const QuestionnairePage = () => {
   };
 
   return (
-    <Box className="questions_container">
-      <h1>Questions pour le test</h1>
+    <Box className="questions_container bg__blue">
+      <h1 className="title">Questions pour le test</h1>
       {questionList}
       <a onClick={handleClick}> Ajouter une autre question </a>
       <div className="questions_container__btn">

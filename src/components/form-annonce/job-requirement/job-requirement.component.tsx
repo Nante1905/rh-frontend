@@ -120,7 +120,7 @@ const JobRequirement = () => {
   };
 
   return (
-    <div className="job-req">
+    <div className="job-req bg__blue">
       <div className="job-req_title">
         <h1>Criteres de Recrutement</h1>
       </div>

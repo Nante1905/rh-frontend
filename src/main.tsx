@@ -13,6 +13,7 @@ import Login from "./components/login/login.component.tsx";
 import AnnonceRoot from "./components/annonce/annonce-root/annonceRoot.component.tsx";
 import QuestionnairePage from "./pages/Questionnaire/QuestionnairePage.tsx";
 import HomePage from "./pages/frontoffice/HomePage.tsx";
+import FormCv from "./components/form-cv/form-cv.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const routes = createBrowserRouter([
       {
         path: "client",
         element: <HomePage />,
+      },
+      {
+        path: "cv/create",
+        element: <FormCv />,
       },
     ],
   },

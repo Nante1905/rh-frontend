@@ -5,6 +5,7 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
 }
 
 html {
@@ -21,4 +22,14 @@ a {
 
 a:hover {
   color: #000000;
+}
+
+h1 {
+  margin: 0;
+}
+
+.bg__blue {
+  background-color: aliceblue;
+  min-height: 100vh;
+  padding-bottom: 5%;
 }
