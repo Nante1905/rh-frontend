@@ -20,14 +20,14 @@ export const qcmSlice = createSlice({
         },
         updateTextQuestion: (state, action) => {
             state.questions.map(q => {
-                if (q.index == action.payload.index) {
+                if (q.index == action.payload.id) {
                     q.contenu = action.payload.text
                 }
             })
         },
         updateCoeffQuestion: (state, action) => {
             state.questions.map(q => {
-                if (q.index == action.payload.index) {
+                if (q.index == action.payload.id) {
                     q.coeff = action.payload.coeff
                 }
             })
@@ -41,7 +41,7 @@ export const qcmSlice = createSlice({
         addAnswer: (state, action) => {
             const question = state.questions.filter(q => q.index == action.payload.questionId)[0];
             const answer = new AnswerClass();
-            answer.index = action.payload.index;
+            answer.index = action.payload.id;
             question.reponses = question.reponses.concat(answer)
         },
         updateTextAnswer: (state, action) => {
@@ -49,12 +49,14 @@ export const qcmSlice = createSlice({
 
             const question = state.questions.filter(q => q.index == action.payload.questionId)[0];
             const answer = question.reponses.filter(a => a.index == action.payload.id)[0];
+            console.log(` id ${action.payload.id} et res ${answer}`);
+
             answer.contenu = action.payload.text;
         },
         updateValueAnswer: (state, action) => {
             const question = state.questions.filter(q => q.index == action.payload.questionId)[0];
             const answer = question.reponses.filter(a => a.index == action.payload.id)[0];
-            answer.value = !answer.value;
+            answer.valeur = !answer.valeur;
         }
 
     }

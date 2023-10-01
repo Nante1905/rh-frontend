@@ -72,6 +72,26 @@ const JobRequirement = () => {
       name: "4-5 ans",
     },
   ];
+  const matrimonial = [
+    {
+      id: 1,
+      name: "Marié",
+    },
+    {
+      id: 2,
+      name: "Célibataire",
+    },
+  ];
+  const nationalite = [
+    {
+      id: 1,
+      name: "Natif",
+    },
+    {
+      id: 2,
+      name: "Etranger",
+    },
+  ];
 
   const [radioValue, setRadioValue] = useState("Homme");
   const dispatch = useDispatch();
@@ -150,7 +170,7 @@ const JobRequirement = () => {
         </div>
         <div className="job-req_form-control">
           <ServiceSelect
-            option={exps}
+            option={matrimonial}
             selectLabel="Situation matrimonial"
             selectValue={useSelector(getMatrimonial)}
             onChange={(
@@ -167,7 +187,7 @@ const JobRequirement = () => {
         </div>
         <div className="job-req_form-control">
           <ServiceSelect
-            option={exps}
+            option={nationalite}
             selectLabel="Nationalite"
             selectValue={useSelector(getNationalite)}
             onChange={(
@@ -189,8 +209,8 @@ const JobRequirement = () => {
             onChange={handleChangeRadio}
             className="radio-group"
           >
-            <FormControlLabel value="0" control={<Radio />} label="Femme" />
-            <FormControlLabel value="1" control={<Radio />} label="Homme" />
+            <FormControlLabel value="1" control={<Radio />} label="Femme" />
+            <FormControlLabel value="2" control={<Radio />} label="Homme" />
           </RadioGroup>
           <TextField
             label="Coef"
