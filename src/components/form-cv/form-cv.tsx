@@ -115,20 +115,17 @@ const FormCV = () => {
       .post(
         `${env.apiUrl}/cv/create`,
         {
-          cvinfo: {
-            nom: name.trim(),
-            utilisateur: { id: 1 },
-            diplome: { diplome: { id: diplome } },
-            domaine: { domaine: { id: domaine } },
-            matrimonial: { matrimonial: { id: matrimonial } },
-            experience: { experience: { id: experience } },
-          },
+          nom: name.trim(),
+          utilisateur: { id: 1 },
+          diplome: { diplome: { id: diplome } },
+          domaine: { domaine: { id: domaine } },
+          matrimonial: { matrimonial: { id: matrimonial } },
+          experience: { experience: { id: experience } },
           // file: cv,
         },
         {
           headers: {
-            "Content-Type": "multipart/form-data",
-            Accept: "application/json",
+            "Content-Type": "application/json",
           },
         }
       )
@@ -204,11 +201,7 @@ const FormCV = () => {
                 className="btn__upload"
               >
                 Votre CV (pdf)
-                <VisuallyHiddenInput
-                  type="file"
-                  onChange={handleCVUpload}
-                  required
-                />
+                <VisuallyHiddenInput type="file" onChange={handleCVUpload} />
               </Button>
               {cv ? <p>{cv.name}</p> : <p>Aucun fichier pdf importé</p>}
             </div>
