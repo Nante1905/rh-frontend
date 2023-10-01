@@ -92,12 +92,39 @@ const FormCV = () => {
     //   cv,
     //   certificat,
     // };
-    console.log(formData.get("info"));
+    // console.log(formData.get("info"));
+
+    // axios
+    //   .post(
+    //     `${env.apiUrl}/cv/create`,
+    //     { formData },
+    //     {
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     }
+    //   )
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
 
     axios
       .post(
         `${env.apiUrl}/cv/create`,
-        { formData },
+        {
+          cvinfo: {
+            nom: name.trim(),
+            utilisateur: { id: 1 },
+            diplome: { diplome: { id: diplome } },
+            domaine: { domaine: { id: domaine } },
+            matrimonial: { matrimonial: { id: matrimonial } },
+            experience: { experience: { id: experience } },
+          },
+          // file: cv,
+        },
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -195,7 +222,6 @@ const FormCV = () => {
                 <VisuallyHiddenInput
                   type="file"
                   onChange={handleCertificatUpload}
-                  required
                 />
               </Button>
               {certificat ? (
