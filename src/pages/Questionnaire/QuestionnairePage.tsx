@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
+import { useState } from "react";
 import QuestionComponent from "../../components/question/QuestionComponent";
 import { Box, Button } from "@mui/material";
 import "./QuestionnairePage.scss";
@@ -7,6 +7,7 @@ import { useDispatch, useStore } from "react-redux";
 import { addQuestion } from "../../store/qcm-form/qcmSlice";
 import { Question } from "../../types/QuestionClass";
 import { RootState } from "../../store/store";
+import { buildFormAnnonceData } from "../../helpers/JobHelpers";
 
 const QuestionnairePage = () => {
   const dispatch = useDispatch();
@@ -51,13 +52,7 @@ const QuestionnairePage = () => {
     const jobCritere = (store.getState() as RootState).jobCritere;
     const jobQcm = (store.getState() as RootState).qcmReducer;
 
-    console.log(
-      JSON.stringify({
-        jobInfo: jobInfo,
-        jobCritere: jobCritere,
-        qcm: jobQcm,
-      })
-    );
+    console.log(JSON.stringify(buildFormAnnonceData(jobInfo, jobCritere)));
   };
 
   return (

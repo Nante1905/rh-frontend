@@ -1,0 +1,56 @@
+interface Diplome {
+  id: number;
+}
+interface JobDiplome {
+  diplome: Diplome;
+  coeff: number;
+}
+
+interface Experience {
+  id: number;
+}
+interface JobExperience {
+  experience: Experience;
+  coeff: number;
+}
+
+interface Matrimoniale {
+  id: number;
+}
+interface JobMatrimoniale {
+  matrimonial: Matrimoniale;
+  coeff: number;
+}
+
+interface Nationalite {
+  id: number;
+}
+interface JobNationalite {
+  nationalite: Nationalite;
+  coeff: number;
+}
+interface Sexe {
+  id: number;
+}
+interface JobSex {
+  genre: Sexe;
+  coeff: number;
+}
+
+interface Service {
+  idService: number;
+}
+
+export interface JobDetail {
+  title: string;
+  volume: number;
+  man_day: number;
+  sal_min: number;
+  sal_max: number;
+  service: Service;
+  jobDiplome: JobDiplome;
+  jobExperience: JobExperience;
+  jobMatrimoniale: JobMatrimoniale;
+  jobNationalite: JobNationalite;
+  jobSexe: JobSex;
+}
