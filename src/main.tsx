@@ -11,6 +11,8 @@ import JobInfo from "./components/form-annonce/job-info/job-info.component.tsx";
 import JobRequirement from "./components/form-annonce/job-requirement/job-requirement.component.tsx";
 import Login from "./components/login/login.component.tsx";
 import AnnonceRoot from "./components/annonce/annonce-root/annonceRoot.component.tsx";
+import QuestionnairePage from "./pages/Questionnaire/QuestionnairePage.tsx";
+import HomePage from "./pages/frontoffice/HomePage.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -40,6 +42,10 @@ const routes = createBrowserRouter([
       {
         path: "/annonce",
         element: <AnnonceRoot />,
+      },
+      {
+        path: "client",
+        element: <HomePage />,
       },
     ],
   },

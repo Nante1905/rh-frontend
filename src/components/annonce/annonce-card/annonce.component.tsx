@@ -6,13 +6,19 @@ const Annonce = ({ data }: any) => {
     <div className="annonce">
       <div className="annonce_job">
         <div className="annonce_body-column">
-          <div className="annonce_body-item-title">Job: {data.job}</div>
-          <div className="annonce_body-item">Service: {data.service}</div>
-          <div className="annonce_body-item">Salaire: {data.salaire}</div>
-        </div>
-        <div className="annonce_body-column">
-          <div className="annonce_body-item">Date: {data.date}</div>
-          <div className="annonce_body-item">Location: {data.location}</div>
+          <div className="annonce_body-item-title">
+            <h1>Job: {data.title}</h1>
+          </div>
+          <div className="annonce_body-item">Service: {data.service.name}</div>
+          <div className="annonce_body-item">
+            Salaire : {data.sal_min} Ar à {data.sal_max} Ar{" "}
+          </div>
+          <div className="annonce_body-item">
+            Diplôme:
+            {data.jobDiplome
+              ? ` Au moins ${data.jobDiplome.diplome.nom}`
+              : ` Pas mentionné`}
+          </div>
         </div>
       </div>
       <div className="btn-submit-container">

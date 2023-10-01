@@ -2,6 +2,7 @@ import { Question } from "../../../types/QuestionClass";
 
 interface Diplome {
   id: number;
+  name?: string;
 }
 interface JobDiplome {
   diplome: Diplome;
