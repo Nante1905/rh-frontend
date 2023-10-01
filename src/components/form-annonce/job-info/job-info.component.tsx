@@ -102,12 +102,22 @@ const JobInfo = () => {
               variant="outlined"
               label="Salaire min"
               type="number"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">Ar</InputAdornment>
+                ),
+              }}
               onChange={(event) => handleChangeInput(event, setSalaireMin)}
             />
             <TextField
               variant="outlined"
               label="Salaire max"
               type="number"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">Ar</InputAdornment>
+                ),
+              }}
               onChange={(event) => handleChangeInput(event, setSalaireMax)}
             />
           </div>

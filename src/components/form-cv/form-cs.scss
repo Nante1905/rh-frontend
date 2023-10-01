@@ -8,6 +8,15 @@
 .cv__form {
     min-height: 100vh;
     background-color: aliceblue;
+
+    .center {
+        display: flex;
+        justify-content: center;
+    }
+
+    .input__large {
+        width: 80%;
+    }
     
     &__card {
         padding: 2%;
@@ -28,8 +37,13 @@
         display:  flex;
         justify-content: space-between;
     }
-
-    .btn__upload {
-        background-color: $theme-color;
+    
+    .btn {
+        &__submit {
+            padding: 2% 10%;
+        }
+        &__upload {
+            background-color: $theme-color;
+        }
     }
 }

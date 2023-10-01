@@ -5,10 +5,19 @@ import {
   options,
 } from "../../constant/CV";
 import ServiceSelect from "../form-annonce/job-info/service-select/service-select.component";
-import { Alert, Button, Card, Snackbar, styled } from "@mui/material";
+import {
+  Alert,
+  Button,
+  Card,
+  Snackbar,
+  TextField,
+  styled,
+} from "@mui/material";
 import "./form-cs.scss";
 import React, { ChangeEvent, useState } from "react";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import axios from "axios";
+import { env } from "../../env";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -23,6 +32,7 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 const FormCV = () => {
+  const [name, setName] = useState<string>("");
   const [diplome, setDiplome] = useState<number>(1);
   const [domaine, setDomaine] = useState<number>(1);
   const [matrimonial, setMatrimonial] = useState<number>(1);
@@ -57,13 +67,68 @@ const FormCV = () => {
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleFormSubmit = (event: any) => {
+    event.preventDefault();
+    const info = {
+      nom: name.trim(),
+      utilisateur: { id: 1 },
+      diplome: { diplome: { id: diplome } },
+      domaine: { domaine: { id: domaine } },
+      matrimonial: { matrimonial: { id: matrimonial } },
+      experience: { experience: { id: experience } },
+    };
+
+    const formData = new FormData();
+
+    formData.append("info", JSON.stringify(info));
+    formData.append("cv", cv as File);
+    formData.append("certificat", certificat as File);
+    // console.log("blob");
+    // console.log(new Blob([JSON.stringify(cvInputs)]));
+
+    // const data = {
+    //   info,
+    //   cv,
+    //   certificat,
+    // };
+    console.log(formData.get("info"));
+
+    axios
+      .post(
+        `${env.apiUrl}/cv/create`,
+        { formData },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <div className="cv__form bg__blue">
       <div className="title">
         <h1>Créez votre CV</h1>
       </div>
       <Card className="cv__form__card">
-        <form>
+        <form encType="multipart/form-data" onSubmit={handleFormSubmit}>
+          <div className="cv__form__element center">
+            <TextField
+              variant="outlined"
+              label="Nom du CV"
+              className="input__large"
+              onChange={(
+                event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+              ) => setName(event.target.value)}
+            />
+          </div>
           <div className="cv__form__element flex">
             <ServiceSelect
               option={options}
@@ -165,6 +230,11 @@ const FormCV = () => {
               Veuillez importer un Certificat de travail en PDF s'il vous plaît.
             </Alert>
           </Snackbar>
+          <div className="cv__form__element center">
+            <Button variant="contained" type="submit" className="btn__submit">
+              Créer mon CV
+            </Button>
+          </div>
         </form>
       </Card>
     </div>
