@@ -11,7 +11,7 @@ export interface AnnonceForm {
 
 const initialState: AnnonceForm = {
   jobTitle: "",
-  service: 0,
+  service: 1,
   volumeHoraire: 0,
   tauxHommeJour: 0,
   salaireMin: 0,

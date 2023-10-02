@@ -1,4 +1,10 @@
-import { Button, InputAdornment, SelectChangeEvent } from "@mui/material";
+import {
+  Alert,
+  Button,
+  InputAdornment,
+  SelectChangeEvent,
+  Snackbar,
+} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import "./job-info.components.scss";
 import ServiceSelect from "./service-select/service-select.component";
@@ -13,12 +19,25 @@ import {
   setVolumeHoraire,
 } from "../../../store/annonce/annonceSlice";
 import { getService } from "../../../store/annonce/selector";
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { ActionCreator } from "@reduxjs/toolkit";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const JobInfo = () => {
   const navigate = useNavigate();
+  const location = useLocation(); //get param from route
+  const [successInserted, setSuccessInserted] = useState<boolean>();
+
+  useEffect(() => {
+    if (location.state == null) {
+      setSuccessInserted(false);
+    } else {
+      if (location.state.success) {
+        setSuccessInserted(true);
+      }
+    }
+  }, []);
+
   const services: Service[] = [
     {
       id: 1,
@@ -125,6 +144,20 @@ const JobInfo = () => {
           </div>
         </form>
       </div>
+      {successInserted && (
+        <Snackbar
+          open={successInserted}
+          onClose={() => setSuccessInserted(false)}
+        >
+          <Alert
+            severity="success"
+            sx={{ width: "100%" }}
+            onClose={() => setSuccessInserted(false)}
+          >
+            Annonce créée avec succès
+          </Alert>
+        </Snackbar>
+      )}
     </div>
   );
 };
