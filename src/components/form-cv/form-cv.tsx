@@ -81,54 +81,18 @@ const FormCV = () => {
 
     const formData = new FormData();
 
-    formData.append("info", JSON.stringify(info));
+    formData.append(
+      "info",
+      new Blob([JSON.stringify(info)], { type: "application/json" })
+    );
     formData.append("cv", cv as File);
     formData.append("certificat", certificat as File);
-    // console.log("blob");
-    // console.log(new Blob([JSON.stringify(cvInputs)]));
-
-    // const data = {
-    //   info,
-    //   cv,
-    //   certificat,
-    // };
-    // console.log(formData.get("info"));
-
-    // axios
-    //   .post(
-    //     `${env.apiUrl}/cv/create`,
-    //     { formData },
-    //     {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data",
-    //       },
-    //     }
-    //   )
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
-
     axios
-      .post(
-        `${env.apiUrl}/cv/create`,
-        {
-          nom: name.trim(),
-          utilisateur: { id: 1 },
-          diplome: { diplome: { id: diplome } },
-          domaine: { domaine: { id: domaine } },
-          matrimonial: { matrimonial: { id: matrimonial } },
-          experience: { experience: { id: experience } },
-          // file: cv,
+      .post(`${env.apiUrl}/cv/test/create`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      })
       .then((res) => {
         console.log(res);
       })
