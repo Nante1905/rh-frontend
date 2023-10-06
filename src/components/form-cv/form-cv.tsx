@@ -17,6 +17,7 @@ import "./form-cs.scss";
 import React, { ChangeEvent, useState } from "react";
 import axios from "axios";
 import { env } from "../../env";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -80,29 +81,18 @@ const FormCV = () => {
 
     const formData = new FormData();
 
-    formData.append("info", JSON.stringify(info));
+    formData.append(
+      "info",
+      new Blob([JSON.stringify(info)], { type: "application/json" })
+    );
     formData.append("cv", cv as File);
     formData.append("certificat", certificat as File);
-    // console.log("blob");
-    // console.log(new Blob([JSON.stringify(cvInputs)]));
-
-    // const data = {
-    //   info,
-    //   cv,
-    //   certificat,
-    // };
-    console.log(formData.get("info"));
-
     axios
-      .post(
-        `${env.apiUrl}/cv/create`,
-        { info },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      )
+      .post(`${env.apiUrl}/cv/create`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((res) => {
         console.log(res);
       })
@@ -167,7 +157,7 @@ const FormCV = () => {
             />
           </div>
           <div className="cv__form__element flex ">
-            {/* <div>
+            <div>
               <Button
                 component="label"
                 variant="contained"
@@ -175,15 +165,11 @@ const FormCV = () => {
                 className="btn__upload"
               >
                 Votre CV (pdf)
-                <VisuallyHiddenInput
-                  type="file"
-                  onChange={handleCVUpload}
-                  required
-                />
+                <VisuallyHiddenInput type="file" onChange={handleCVUpload} />
               </Button>
               {cv ? <p>{cv.name}</p> : <p>Aucun fichier pdf importé</p>}
-            </div> */}
-            {/* <div>
+            </div>
+            <div>
               <Button
                 component="label"
                 variant="contained"
@@ -194,7 +180,6 @@ const FormCV = () => {
                 <VisuallyHiddenInput
                   type="file"
                   onChange={handleCertificatUpload}
-                  required
                 />
               </Button>
               {certificat ? (
@@ -202,7 +187,7 @@ const FormCV = () => {
               ) : (
                 <p>Aucun fichier pdf importé</p>
               )}
-            </div> */}
+            </div>
           </div>
           {/* Snackbar for UPLOAD ERROR */}
           <Snackbar
