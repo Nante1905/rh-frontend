@@ -14,6 +14,8 @@ import AnnonceRoot from "./components/annonce/annonce-root/annonceRoot.component
 import QuestionnairePage from "./pages/Questionnaire/QuestionnairePage.tsx";
 import HomePage from "./pages/frontoffice/HomePage.tsx";
 import FormCv from "./components/form-cv/form-cv.tsx";
+import BackOffice from "./pages/backoffice/BackOffice.tsx";
+import HomeBackOffice from "./components/back-office/home/Home-back-office.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -51,6 +53,20 @@ const routes = createBrowserRouter([
       {
         path: "cv/create",
         element: <FormCv />,
+      },
+    ],
+  },
+  {
+    path: "admin",
+    element: (
+      <BackOffice>
+        <Outlet />
+      </BackOffice>
+    ),
+    children: [
+      {
+        index: true,
+        element: <HomeBackOffice />,
       },
     ],
   },

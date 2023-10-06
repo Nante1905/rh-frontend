@@ -18,6 +18,7 @@ import React, { ChangeEvent, useState } from "react";
 import axios from "axios";
 import { env } from "../../env";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { useNavigate } from "react-router-dom";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -32,6 +33,7 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 const FormCV = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState<string>("");
   const [diplome, setDiplome] = useState<number>(1);
   const [domaine, setDomaine] = useState<number>(1);
@@ -95,6 +97,7 @@ const FormCV = () => {
       })
       .then((res) => {
         console.log(res);
+        navigate("/client", { state: { success: true } });
       })
       .catch((err) => {
         console.error(err);

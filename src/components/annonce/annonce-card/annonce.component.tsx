@@ -11,7 +11,7 @@ const Annonce = ({ data }: any) => {
           </div>
           <div className="annonce_body-item">Service: {data.service.name}</div>
           <div className="annonce_body-item">
-            Salaire : {data.sal_min} Ar à {data.sal_max} Ar{" "}
+            Salaire à partir de : {data.sal_min} Ar
           </div>
           <div className="annonce_body-item">
             Diplôme:
