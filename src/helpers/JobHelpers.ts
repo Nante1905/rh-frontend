@@ -22,6 +22,9 @@ export const buildFormAnnonceData = (
         id: jobCritere.diplome,
       },
       coeff: jobCritere.diplomeCoef,
+      domaine: {
+        id: jobCritere.domaine
+      }
     },
     jobExperience: {
       experience: {

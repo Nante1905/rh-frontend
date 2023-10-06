@@ -4,9 +4,16 @@ interface Diplome {
   id: number;
   name?: string;
 }
+
+interface Domaine {
+  id: number,
+  nom?: string
+}
+
 interface JobDiplome {
   diplome: Diplome;
   coeff: number;
+  domaine: Domaine
 }
 
 interface Experience {
