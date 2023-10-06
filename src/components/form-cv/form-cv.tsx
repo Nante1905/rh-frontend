@@ -88,7 +88,7 @@ const FormCV = () => {
     formData.append("cv", cv as File);
     formData.append("certificat", certificat as File);
     axios
-      .post(`${env.apiUrl}/cv/test/create`, formData, {
+      .post(`${env.apiUrl}/cv/create`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
