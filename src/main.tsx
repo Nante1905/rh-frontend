@@ -16,6 +16,7 @@ import HomePage from "./pages/frontoffice/HomePage.tsx";
 import FormCv from "./components/form-cv/form-cv.tsx";
 import BackOffice from "./pages/backoffice/BackOffice.tsx";
 import HomeBackOffice from "./components/back-office/home/Home-back-office.component.tsx";
+import DetailsAnnonce from "./components/back-office/annonce/details-annonce/DetailsAnnonce.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const routes = createBrowserRouter([
       {
         index: true,
         element: <HomeBackOffice />,
+      },
+      {
+        path: "annonces/:id/candidatures",
+        element: <DetailsAnnonce />,
       },
     ],
   },
