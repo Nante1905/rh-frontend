@@ -79,6 +79,14 @@ const CandidatureCard = (props: any) => {
                 <h3>Informations personnelles</h3>
                 <List>
                   <ListItem>
+                    {" "}
+                    <strong className="info-item-title">
+                      {addIcon(candidature.utilisateur.genre.valide as boolean)}
+                      Genre:{" "}
+                    </strong>{" "}
+                    <span>{candidature.utilisateur.genre.nom}</span>
+                  </ListItem>
+                  <ListItem>
                     <strong className="info-item-title">Ville: </strong>{" "}
                     <span>{candidature.utilisateur.ville.nom}</span>
                   </ListItem>
@@ -101,6 +109,14 @@ const CandidatureCard = (props: any) => {
                     <span>
                       {candidature.utilisateur.nationalite.nationalite}
                     </span>
+                  </ListItem>
+                  <ListItem>
+                    {" "}
+                    <strong className="info-item-title">
+                      {addIcon(candidature.matrimonial.valide as boolean)}
+                      Situation matrimonial:{" "}
+                    </strong>{" "}
+                    <span>{candidature.matrimonial.situation}</span>
                   </ListItem>
                   <ListItem>
                     <strong className="info-item-title">Téléphone: </strong>{" "}
@@ -149,9 +165,6 @@ const CandidatureCard = (props: any) => {
                   <ListItem>
                     <strong>Certificat de travail</strong>{" "}
                     <a
-                      // href={`${env.apiUrl}/candidatures/docs/${candidature.fichier.diplome}`}
-                      // without="true"
-                      // rel="noopener noreferrer"
                       target="_blank"
                       onClick={() => {
                         window.open(
