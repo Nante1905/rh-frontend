@@ -1,5 +1,9 @@
 $theme-color: #317B93;
- 
+$success: #27b81f;
+$danger: #c93e3e;
+
 :export {
   themeColor: $theme-color;
+  success: $success;
+  danger: $danger;
 }

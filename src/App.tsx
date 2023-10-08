@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function App({ children }: any) {

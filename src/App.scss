@@ -1,0 +1,26 @@
+@import './variables.module.scss';
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #80808070;
+    border-radius: 6px;
+}
+
+.div-success {
+    background-color: $success !important;
+}
+
+.div-danger {
+    background-color: $danger !important;
+}

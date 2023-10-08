@@ -1,31 +1,33 @@
 import { Question } from "../../../types/QuestionClass";
 
-interface Diplome {
-  id: number;
-  name?: string;
+export interface Diplome {
+  id?: number;
+  nom?: string;
 }
 
-interface Domaine {
-  id: number,
+export interface Domaine {
+  id?: number,
   nom?: string
 }
 
-interface JobDiplome {
+export interface JobDiplome {
   diplome: Diplome;
-  coeff: number;
+  coeff?: number;
   domaine: Domaine
 }
 
-interface Experience {
-  id: number;
+export interface Experience {
+  id?: number;
+  experience?: string;
 }
 interface JobExperience {
   experience: Experience;
   coeff: number;
 }
 
-interface Matrimoniale {
+export interface Matrimoniale {
   id: number;
+  situation?: string;
 }
 interface JobMatrimoniale {
   matrimonial: Matrimoniale;
@@ -40,7 +42,8 @@ interface JobNationalite {
   coeff: number;
 }
 interface Sexe {
-  id: number;
+  id?: number;
+  nom?: string
 }
 interface JobSex {
   genre: Sexe;
@@ -48,8 +51,8 @@ interface JobSex {
 }
 
 export interface Service {
-  id: number;
-  name?: string;
+  id?: number;
+  nom_service?: string;
 }
 
 export interface Questionnaire {
@@ -62,6 +65,7 @@ export interface JobDetail {
   man_day: number;
   sal_min: number;
   sal_max: number;
+  jour?: string;
   service: Service;
   jobDiplome: JobDiplome;
   jobExperience: JobExperience;
