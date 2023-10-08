@@ -15,8 +15,8 @@ const ServiceSelect = ({ option, selectLabel, selectValue, onChange }: any) => {
         required
       >
         {option.map((e: any) => (
-          <MenuItem key={e.id} value={e.id}>
-            {e.name}
+          <MenuItem key={e?.id} value={e?.id}>
+            {e?.name}
           </MenuItem>
         ))}
       </Select>

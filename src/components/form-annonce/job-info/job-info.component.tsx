@@ -1,15 +1,7 @@
-import {
-  Alert,
-  Button,
-  InputAdornment,
-  SelectChangeEvent,
-  Snackbar,
-} from "@mui/material";
+import { Alert, Button, InputAdornment, Snackbar } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import "./job-info.components.scss";
-import ServiceSelect from "./service-select/service-select.component";
-import { Service } from "../types/JobCriteria";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   setJobTile,
   setSalaireMax,
@@ -18,15 +10,19 @@ import {
   setTauxHJ,
   setVolumeHoraire,
 } from "../../../store/annonce/annonceSlice";
-import { getService } from "../../../store/annonce/selector";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { ActionCreator } from "@reduxjs/toolkit";
 import { useLocation, useNavigate } from "react-router-dom";
+import { getCurrentService } from "../../../services/form-annonce/form-annonce.service";
+import { Service } from "../types/JobCriteria";
 
 const JobInfo = () => {
   const navigate = useNavigate();
   const location = useLocation(); //get param from route
   const [successInserted, setSuccessInserted] = useState<boolean>();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [currentService, setCurrentService] = useState<string>("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (location.state == null) {
@@ -36,29 +32,19 @@ const JobInfo = () => {
         setSuccessInserted(true);
       }
     }
+
+    getCurrentService(
+      (res: Service | string) => {
+        res = res as Service;
+        dispatch(setService(res?.id));
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        setCurrentService(res.nom_service as string);
+      },
+      (err: Service | string) => {
+        console.log(err as string);
+      }
+    );
   }, []);
-
-  const services: Service[] = [
-    {
-      id: 1,
-      name: "RH",
-    },
-    {
-      id: 2,
-      name: "Compta",
-    },
-    {
-      id: 3,
-      name: "Production",
-    },
-  ];
-
-  const dispatch = useDispatch();
-  const selectedValue: number = useSelector(getService);
-
-  const handleChangeSelect = (event: SelectChangeEvent) => {
-    dispatch(setService(event.target.value));
-  };
 
   const handleChangeInput = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -88,12 +74,19 @@ const JobInfo = () => {
               onChange={(event) => handleChangeInput(event, setJobTile)}
               required
             />
-            <ServiceSelect
-              option={services}
+            {/* <ServiceSelect
+              option={currentService}
               selectLabel="Service"
               selectValue={selectedValue}
               onChange={handleChangeSelect}
               required
+            /> */}
+            <TextField
+              variant="outlined"
+              label="Service"
+              value={currentService}
+              onChange={(e) => setCurrentService(e.target.value)}
+              disabled
             />
           </div>
           <div className="job-info_hour">

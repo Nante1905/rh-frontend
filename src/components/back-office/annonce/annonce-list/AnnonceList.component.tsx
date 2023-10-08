@@ -3,16 +3,19 @@ import "./AnnonceList.component.scss";
 import { JobMinDetails } from "../../../../types/Job";
 import "./AnnonceList.component.scss";
 import AnnonceCard from "../annonce-card/AnnonceCard.component";
-import axios from "axios";
 import { env } from "../../../../env";
-import { Alert, Snackbar } from "@mui/material";
+import { Alert, Button, Snackbar } from "@mui/material";
+import { http } from "../../../../interceptors/requestInterceptor";
+import { useNavigate } from "react-router-dom";
 
 const AnnonceList = () => {
   const [annonces, setAnnonces] = useState<JobMinDetails[]>([]);
   const [error, setError] = useState<string | null>(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    axios
+    http
       .get(`${env.apiUrl}/job/annonce`)
       .then((res) => {
         console.log(res);
@@ -25,7 +28,16 @@ const AnnonceList = () => {
   return (
     <>
       <div className="annonce-list">
-        <h1>Liste des annonces</h1>
+        <div className="annonce-list_header">
+          <h1>Liste des annonces</h1>
+          <Button
+            className="annonce-add-btn"
+            variant="contained"
+            onClick={() => navigate("/job/create")}
+          >
+            Creer une annonce
+          </Button>
+        </div>
         <div className="annonce-list_container">
           {annonces.map((e, index) => (
             <AnnonceCard key={index} job={e} />

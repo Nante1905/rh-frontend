@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import AnnonceRoot from "../../components/annonce/annonce-root/annonceRoot.component";
+import AnnonceRoot from "../../components/annonce/annonceRoot.component";
 import "./HomePage.scss";
 
 import React, { useEffect, useState } from "react";
