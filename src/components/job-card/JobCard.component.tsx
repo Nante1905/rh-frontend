@@ -49,7 +49,7 @@ const JobCard = (props: any) => {
                 <strong>Diplôme: </strong>{" "}
                 <span>
                   {annonce.jobDiplome.diplome.nom} en{" "}
-                  {annonce.jobDiplome.domaine.nom}
+                  {annonce.jobDiplome.domaine?.nom}
                 </span>
               </ListItem>
               <ListItem>
