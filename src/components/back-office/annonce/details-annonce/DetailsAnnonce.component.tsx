@@ -4,11 +4,10 @@ import React, { useEffect, useState } from "react";
 import "./DetailsAnnonce.component.scss";
 import JobCard from "../../../job-card/JobCard.component";
 import { JobDetail } from "../../../form-annonce/types/JobCriteria";
-import axios from "axios";
-import { env } from "../../../../env";
 import { Alert, Snackbar, Tab, Tabs } from "@mui/material";
 import { useLocation, useParams } from "react-router-dom";
 import CandidatureList from "../../candidature/candidature-list/CandidatureList.component";
+import { http } from "../../../../interceptors/requestInterceptor";
 
 const DetailsAnnonce = (props: any) => {
   const [annonce, setAnnonce] = useState<JobDetail | null>(null);
@@ -19,8 +18,8 @@ const DetailsAnnonce = (props: any) => {
   useEffect(() => {
     // setIdJob(location.state.id);
 
-    axios
-      .get(`${env.apiUrl}/job/${idJob}`)
+    http
+      .get(`/job/${idJob}`)
       .then((res) => {
         console.log(res.data);
         setAnnonce(res.data);

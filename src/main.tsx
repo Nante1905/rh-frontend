@@ -9,7 +9,7 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import JobInfo from "./components/form-annonce/job-info/job-info.component.tsx";
 import JobRequirement from "./components/form-annonce/job-requirement/job-requirement.component.tsx";
-import AnnonceRoot from "./components/annonce/annonce-root/annonceRoot.component.tsx";
+import AnnonceRoot from "./components/annonce/annonceRoot.component.tsx";
 import QuestionnairePage from "./pages/Questionnaire/QuestionnairePage.tsx";
 import HomePage from "./pages/frontoffice/HomePage.tsx";
 import FormCv from "./components/form-cv/form-cv.tsx";
@@ -18,6 +18,7 @@ import HomeBackOffice from "./components/back-office/home/Home-back-office.compo
 import DetailsAnnonce from "./components/back-office/annonce/details-annonce/DetailsAnnonce.component.tsx";
 
 import SignIn from "./components/auth/SignIn.component.tsx";
+import FoCandidature from "./components/front-office/candidature/foCandidature.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <SignIn />,
+      },
+      {
+        path: "/job/create",
         element: <JobInfo />,
       },
       {
@@ -51,6 +56,10 @@ const routes = createBrowserRouter([
       {
         path: "client",
         element: <HomePage />,
+      },
+      {
+        path: "candidatures",
+        element: <FoCandidature />,
       },
       {
         path: "cv/create",

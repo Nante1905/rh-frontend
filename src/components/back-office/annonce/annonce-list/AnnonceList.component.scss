@@ -1,11 +1,17 @@
+@import "/src/variables.module.scss";
 .annonce-list {
-    &_container {
-      display: grid;
-      grid-template-columns: 50% 50%;
-      place-content: center;
-    }
-    h1 {
-      text-align: center;
+  &_header {
+    padding-top: 2%;
+    text-align: center;
+    .annonce-add-btn {
+      margin-top: 2%;
+      background-color: $theme-color;
     }
   }
-  
+
+  &_container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    place-content: center;
+  }
+}

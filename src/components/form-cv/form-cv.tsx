@@ -15,10 +15,9 @@ import {
 } from "@mui/material";
 import "./form-cs.scss";
 import React, { ChangeEvent, useState } from "react";
-import axios from "axios";
-import { env } from "../../env";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useNavigate } from "react-router-dom";
+import { http } from "../../interceptors/requestInterceptor";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -89,8 +88,8 @@ const FormCV = () => {
     );
     formData.append("cv", cv as File);
     formData.append("certificat", certificat as File);
-    axios
-      .post(`${env.apiUrl}/cv/create`, formData, {
+    http
+      .post(`/cv/create`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

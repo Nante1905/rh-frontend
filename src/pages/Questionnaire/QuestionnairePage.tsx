@@ -9,8 +9,8 @@ import { Question } from "../../types/QuestionClass";
 import { RootState } from "../../store/store";
 import { buildFormAnnonceData } from "../../helpers/JobHelpers";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { env } from "../../env";
+import { http } from "../../interceptors/requestInterceptor";
 
 const QuestionnairePage = () => {
   const dispatch = useDispatch();
@@ -57,7 +57,7 @@ const QuestionnairePage = () => {
     const jobCritere = (store.getState() as RootState).jobCritere;
     const jobQcm = (store.getState() as RootState).qcmReducer;
 
-    axios
+    http
       .post(
         `${env.apiUrl}/test/save`,
         buildFormAnnonceData(jobInfo, jobCritere, jobQcm),
