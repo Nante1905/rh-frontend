@@ -3,7 +3,7 @@ import "./HomePage.scss";
 
 import React, { useEffect, useState } from "react";
 import { Alert, Snackbar } from "@mui/material";
-import AnnonceRoot from "../../../components/annonce/annonce-root/annonceRoot.component";
+import AnnonceRoot from "../../../components/annonce/annonceRoot.component";
 
 const HomePage = () => {
   const [successInserted, setSuccessInserted] = useState<boolean>();

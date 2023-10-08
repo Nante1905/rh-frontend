@@ -1,0 +1,28 @@
+.annonce-root {
+  h1 {
+    margin-block: 1rem;
+  }
+
+  &_container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    place-content: center;
+  }
+  .annonce-card {
+    .job-card {
+      width: 80% !important;
+    }
+    .apply-btn {
+      padding-top: 1rem;
+      text-align: center;
+    }
+  }
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.dialog-root {
+  text-align: center !important;
+}

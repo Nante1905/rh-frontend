@@ -6,6 +6,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Chip,
   Collapse,
   List,
   ListItem,
@@ -15,6 +16,12 @@ import {
 const JobCard = (props: any) => {
   const [expanded, setExpanded] = useState<boolean>(false);
   const annonce = props.annonce;
+  const frontOffice = props.frontOffice as boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onPostule: (idJob: number) => void = props.onPostule;
+  const status = props.status;
+
+  const statusMap = ["En attente", "Test", "Entretien", "Embauche"];
 
   return (
     <Card className="job-card">
@@ -69,6 +76,34 @@ const JobCard = (props: any) => {
               </ListItem>
             </List>
           </div>
+          {frontOffice === true ? (
+            <div className="apply-btn">
+              <Button
+                variant="contained"
+                onClick={() => onPostule(annonce.idJob)}
+              >
+                Postuler
+              </Button>
+            </div>
+          ) : (
+            <></>
+          )}
+          {status !== undefined ? (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Chip
+                label={statusMap[status]}
+                color="primary"
+                variant="contained"
+              />
+            </div>
+          ) : (
+            ""
+          )}
         </Collapse>
       </CardContent>
     </Card>

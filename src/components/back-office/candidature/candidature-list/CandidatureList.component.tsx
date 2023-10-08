@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import "./CandidatureList.component.scss";
 import { Candidature } from "../../../../types/Candidature";
-import axios from "axios";
 import { env } from "../../../../env";
 import CandidatureCard from "../candidature-card/CandidatureCard.component";
 import { CANDIDATURE_STATUS } from "../../../../constant/CandidatureStatus";
+import { http } from "../../../../interceptors/requestInterceptor";
 
 const CandidatureList = (props: any) => {
   const idJob = props.idJob;
@@ -23,7 +23,7 @@ const CandidatureList = (props: any) => {
     } else if (status == CANDIDATURE_STATUS.selection) {
       url += `/job/${idJob}/selections`;
     }
-    axios
+    http
       .get(url)
       .then((res) => {
         setCandidatures(res.data);
