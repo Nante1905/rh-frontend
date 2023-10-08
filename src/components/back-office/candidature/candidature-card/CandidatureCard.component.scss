@@ -1,0 +1,56 @@
+@import '../../../../variables.module.scss';
+
+.candidature-card {
+    h4, p {
+        margin: 0;
+    }
+    &-item {
+        margin: 2% 0%;
+    }
+    &-actions {
+        text-align: center;
+        // padding: 2% 0%;
+    }
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .note {
+            display: grid;
+            align-content: center;
+            font-weight: bold;
+            font-size: xx-large;
+            color: white;
+            background-color: #b99520;
+            width: 5rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            text-align: center;
+        }
+    }
+
+    &-collapse {
+        .info-item {
+            &-title {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        &-actions {
+            display: flex;
+            justify-content: space-around;
+            padding: 2% 0%;
+            flex-wrap: wrap;
+        }
+    }
+
+    .icon {
+        &.success {
+            color: $success;
+        }
+        &.danger {
+            color: $danger;
+        }
+    }
+}
