@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import Annonce from "../annonce-card/annonce.component";
 import "./annonceRoot.component.scss";
 import { JobDetail } from "../../form-annonce/types/JobCriteria";
-import axios from "axios";
-import { env } from "../../../env";
+import { http } from "../../../interceptors/requestInterceptor";
 
 const AnnonceRoot = () => {
   // const annoncesData = [
@@ -36,8 +35,8 @@ const AnnonceRoot = () => {
   const [annonces, setAnnonces] = useState<JobDetail[]>([]);
 
   useEffect(() => {
-    axios
-      .get(`${env.apiUrl}/job`)
+    http
+      .get(`/job`)
       .then((res) => {
         console.log(res);
         setAnnonces(res.data.jobs);
