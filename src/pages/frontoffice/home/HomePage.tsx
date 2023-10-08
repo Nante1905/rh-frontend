@@ -1,9 +1,9 @@
 import { useLocation } from "react-router-dom";
-import AnnonceRoot from "../../components/annonce/annonce-root/annonceRoot.component";
 import "./HomePage.scss";
 
 import React, { useEffect, useState } from "react";
 import { Alert, Snackbar } from "@mui/material";
+import AnnonceRoot from "../../../components/annonce/annonce-root/annonceRoot.component";
 
 const HomePage = () => {
   const [successInserted, setSuccessInserted] = useState<boolean>();

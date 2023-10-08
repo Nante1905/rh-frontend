@@ -57,6 +57,8 @@ export const qcmSlice = createSlice({
             answer.contenu = action.payload.text;
         },
         updateValueAnswer: (state, action) => {
+            console.log(action.payload.id);
+
             const question = state.questions.filter(q => q.index == action.payload.questionId)[0];
             const answer = question.reponses.filter(a => a.index == action.payload.id)[0];
             answer.valeur = !answer.valeur;
@@ -65,4 +67,4 @@ export const qcmSlice = createSlice({
     }
 })
 
-export const { addQuestion, updateTextQuestion, updateCoeffQuestion, addAnswer, updateTextAnswer, updateValueAnswer, deleteQuestion } = qcmSlice.actions
+export const { setQcm, addQuestion, updateTextQuestion, updateCoeffQuestion, addAnswer, updateTextAnswer, updateValueAnswer, deleteQuestion } = qcmSlice.actions

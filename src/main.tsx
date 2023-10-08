@@ -11,13 +11,15 @@ import JobInfo from "./components/form-annonce/job-info/job-info.component.tsx";
 import JobRequirement from "./components/form-annonce/job-requirement/job-requirement.component.tsx";
 import AnnonceRoot from "./components/annonce/annonce-root/annonceRoot.component.tsx";
 import QuestionnairePage from "./pages/Questionnaire/QuestionnairePage.tsx";
-import HomePage from "./pages/frontoffice/HomePage.tsx";
 import FormCv from "./components/form-cv/form-cv.tsx";
 import BackOffice from "./pages/backoffice/BackOffice.tsx";
 import HomeBackOffice from "./components/back-office/home/Home-back-office.component.tsx";
 import DetailsAnnonce from "./components/back-office/annonce/details-annonce/DetailsAnnonce.component.tsx";
 
 import SignIn from "./components/auth/SignIn.component.tsx";
+import FrontOffice from "./pages/frontoffice/FrontOffice.tsx";
+import HomePage from "./pages/frontoffice/home/HomePage.tsx";
+import QcmComponent from "./components/qcm/QcmComponent.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -55,6 +57,20 @@ const routes = createBrowserRouter([
       {
         path: "cv/create",
         element: <FormCv />,
+      },
+    ],
+  },
+  {
+    path: "client",
+    element: (
+      <FrontOffice>
+        <Outlet />
+      </FrontOffice>
+    ),
+    children: [
+      {
+        path: "job/:id/qcm",
+        element: <QcmComponent />,
       },
     ],
   },

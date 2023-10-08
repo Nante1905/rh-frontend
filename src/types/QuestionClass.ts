@@ -12,8 +12,7 @@ export class Question {
         answer.index = 1;
         this.reponses = [answer]
     }
+
+
 }
 
-export interface Questionnaire {
-    questions: Question[]
-}
