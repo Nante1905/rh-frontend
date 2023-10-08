@@ -15,6 +15,9 @@ export const qcmSlice = createSlice({
     name: "qcmSlice",
     initialState,
     reducers: {
+        setQcm: (state, action) => {
+            state.questions = action.payload.questions;
+        },
         addQuestion: (state, action) => {
             state.questions.push(action.payload)
         },

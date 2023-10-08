@@ -13,3 +13,7 @@ export class Question {
         this.reponses = [answer]
     }
 }
+
+export interface Questionnaire {
+    questions: Question[]
+}
