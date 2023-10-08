@@ -16,12 +16,14 @@ import { Auth } from "../../types/AuthInterface";
 import { authenticate } from "../../services/authentication.service";
 import { useState } from "react";
 import { Alert, Snackbar } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function SignIn() {
   const [errMessage, setErrMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -33,7 +35,10 @@ export default function SignIn() {
 
     authenticate(
       authData,
-      (token: string) => sessionStorage.setItem("token", token),
+      (token: string) => {
+        sessionStorage.setItem("token", token);
+        navigate("/client");
+      },
       (err: string) => setErrMessage(err)
     );
   };
