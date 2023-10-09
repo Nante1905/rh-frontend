@@ -21,6 +21,7 @@ import FrontOffice from "./pages/frontoffice/FrontOffice.tsx";
 import HomePage from "./pages/frontoffice/home/HomePage.tsx";
 import QcmComponent from "./components/qcm/QcmComponent.tsx";
 import FoCandidature from "./components/front-office/candidature/foCandidature.component.tsx";
+import NavbarBackOffice from "./components/back-office/navbar/NavbarBackOffice.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ const routes = createBrowserRouter([
       {
         path: "cv/create",
         element: <FormCv />,
+      },
+      {
+        path: "navbar",
+        element: <NavbarBackOffice />,
       },
     ],
   },
