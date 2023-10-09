@@ -11,6 +11,7 @@ import {
   List,
   ListItem,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const JobCard = (props: any) => {
@@ -22,6 +23,27 @@ const JobCard = (props: any) => {
   const status = props.status;
 
   const statusMap = ["En attente", "Test", "Entretien", "Embauche"];
+
+  const navigate = useNavigate();
+
+  const renderStatusComponent = (status: number) => {
+    if (status === 1) {
+      return (
+        <Button
+          variant="contained"
+          onClick={() => navigate(`/client/job/${annonce.idJob}/qcm`)}
+        >
+          Passer votre test
+        </Button>
+      );
+    } else if (status === undefined) {
+      return <></>;
+    } else {
+      return (
+        <Chip label={statusMap[status]} color="primary" variant="contained" />
+      );
+    }
+  };
 
   return (
     <Card className="job-card">
@@ -88,22 +110,14 @@ const JobCard = (props: any) => {
           ) : (
             <></>
           )}
-          {status !== undefined ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              <Chip
-                label={statusMap[status]}
-                color="primary"
-                variant="contained"
-              />
-            </div>
-          ) : (
-            ""
-          )}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            {renderStatusComponent(status)}
+          </div>
         </Collapse>
       </CardContent>
     </Card>

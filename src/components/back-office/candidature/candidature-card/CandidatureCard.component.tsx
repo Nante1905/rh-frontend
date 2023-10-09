@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CandidatureCard.component.scss";
 import {
+  Alert,
   Button,
   Card,
   CardContent,
@@ -10,17 +11,24 @@ import {
   Collapse,
   List,
   ListItem,
+  Snackbar,
 } from "@mui/material";
 import { Candidature } from "../../../../types/Candidature";
 import { env } from "../../../../env";
 import { CANDIDATURE_STATUS } from "../../../../constant/CandidatureStatus";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import { GppBad } from "@mui/icons-material";
+import { http } from "../../../../interceptors/requestInterceptor";
 
 const CandidatureCard = (props: any) => {
   const [expanded, setExpanded] = useState<boolean>(false);
   const candidature: Candidature = props.candidature;
   const status = props.status;
+  const [updateStatusState, setUpdateStatusState] = useState<any>({
+    open: false,
+    message: "",
+    disableTestBtn: false,
+  });
 
   const addIcon = (state: boolean) => {
     if (status == CANDIDATURE_STATUS.selection) {
@@ -30,6 +38,48 @@ const CandidatureCard = (props: any) => {
       return <GppBad className="icon danger" />;
     }
     return <></>;
+  };
+
+  useEffect(() => {
+    if (candidature.status != 0) {
+      setUpdateStatusState({ ...updateStatusState, disableTestBtn: true });
+    }
+  }, []);
+
+  const fairePasserTest = () => {
+    http
+      .put(`/candidatures/${candidature.id}`, {
+        status: 1,
+      })
+      .then((res: any) => {
+        if (res.OK) {
+          setUpdateStatusState({
+            open: true,
+            message: res.data.message,
+            disableTestBtn: true,
+          });
+          // setOpen(true);
+          // setMessage(res.data.message);
+          // setDisableTestBtn(true);
+        } else {
+          setUpdateStatusState({
+            ...updateStatusState,
+            open: true,
+            message: res.data.message,
+          });
+          // setOpen(true);
+          // setMessage(res.data.message);
+        }
+      })
+      .catch((err) => {
+        setUpdateStatusState({
+          ...updateStatusState,
+          open: true,
+          message: err.data,
+        });
+        // setOpen(true);
+        // setMessage(err.data);
+      });
   };
 
   return (
@@ -191,7 +241,8 @@ const CandidatureCard = (props: any) => {
                   <Button
                     className="div-success"
                     variant="contained"
-                    // onClick={() => setExpanded(!expanded)}
+                    onClick={() => fairePasserTest()}
+                    disabled={updateStatusState.disableTestBtn}
                   >
                     Faire passer le test
                   </Button>
@@ -201,6 +252,20 @@ const CandidatureCard = (props: any) => {
           </Collapse>
         </CardContent>
       </Card>
+      <Snackbar
+        open={updateStatusState.open}
+        autoHideDuration={6000}
+        onClose={() =>
+          setUpdateStatusState({
+            ...updateStatusState,
+            open: false,
+          })
+        }
+      >
+        <Alert severity="success" sx={{ width: "100%" }}>
+          {updateStatusState.message}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

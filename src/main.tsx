@@ -67,6 +67,10 @@ const routes = createBrowserRouter([
         path: "cv/create",
         element: <FormCv />,
       },
+      {
+        path: "/navbar",
+        element: <Navbar />,
+      },
     ],
   },
   {

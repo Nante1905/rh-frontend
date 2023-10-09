@@ -3,6 +3,12 @@
     margin-block: 1rem;
   }
 
+  .candidatures-btn {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+
   &_container {
     display: grid;
     grid-template-columns: 50% 50%;

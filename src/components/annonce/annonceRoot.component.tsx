@@ -15,6 +15,7 @@ import {
 import { Cv } from "../../types/Utilisateur";
 import { getAllCvOf } from "../../services/form-annonce/cv.service";
 import { saveCandidature } from "../../services/candidature/candidature.service";
+import { useNavigate } from "react-router-dom";
 
 const AnnonceRoot = () => {
   const [annonces, setAnnonces] = useState<JobDetail[]>([]);
@@ -22,6 +23,7 @@ const AnnonceRoot = () => {
   const [idCv, setIdCv] = useState<number>(1);
   const [idJob, setIdJob] = useState<number>(1);
   const [cvs, setCvs] = useState<Cv[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     http
@@ -65,6 +67,11 @@ const AnnonceRoot = () => {
   return (
     <div className="annonce-root">
       <h1>Liste des annonces</h1>
+      <div className="candidatures-btn">
+        <Button variant="contained" onClick={() => navigate("/candidatures")}>
+          Voir mes candidatures
+        </Button>
+      </div>
       <div className="annonce-root_container">
         {annonces.map((e, index) => (
           <div className="annonce-card" key={index}>
