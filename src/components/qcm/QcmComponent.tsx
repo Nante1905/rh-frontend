@@ -11,7 +11,7 @@ import { setQcm } from "../../store/qcm-form/qcmSlice";
 import { Qcm, Test, TestReponse } from "../../types/Qcm";
 import { Button, Card, CardContent } from "@mui/material";
 import AnswerComponent from "../answer/AnswerComponent";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { RootState, store } from "../../store/store";
 
 const QcmComponent = () => {
@@ -19,6 +19,8 @@ const QcmComponent = () => {
   const [questionnaire, setQuestionnaire] = useState<Qcm | null>(null);
   const params = useParams();
   const idJob = params.id;
+  const location = useLocation();
+  console.log(location.state.candidature);
 
   useEffect(() => {
     let questions: Qcm | null = null;
@@ -43,7 +45,7 @@ const QcmComponent = () => {
     });
 
     const data: Test = {
-      idCandidature: 2,
+      idCandidature: location.state.candidature,
       reponses,
     };
 

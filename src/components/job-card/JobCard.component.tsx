@@ -21,17 +21,22 @@ const JobCard = (props: any) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onPostule: (idJob: number) => void = props.onPostule;
   const status = props.status;
-
+  const candidature = props.candidature;
   const statusMap = ["En attente", "Test", "Entretien", "Embauche"];
 
   const navigate = useNavigate();
+  console.log("job carrrr " + candidature);
 
   const renderStatusComponent = (status: number) => {
     if (status === 1) {
       return (
         <Button
           variant="contained"
-          onClick={() => navigate(`/client/job/${annonce.idJob}/qcm`)}
+          onClick={() =>
+            navigate(`/client/job/${annonce.idJob}/qcm`, {
+              state: { candidature: candidature },
+            })
+          }
         >
           Passer votre test
         </Button>

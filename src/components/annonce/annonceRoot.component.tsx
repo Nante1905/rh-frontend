@@ -110,6 +110,14 @@ const AnnonceRoot = () => {
             <Button
               onClick={() => {
                 handleClose();
+                navigate("/cv/create");
+              }}
+            >
+              Créer CV
+            </Button>
+            <Button
+              onClick={() => {
+                handleClose();
                 onPostule();
               }}
             >

@@ -22,8 +22,16 @@ import { http } from "../../../../interceptors/requestInterceptor";
 
 const CandidatureCard = (props: any) => {
   const [expanded, setExpanded] = useState<boolean>(false);
-  const candidature: Candidature = props.candidature;
+  let candidature: Candidature = props.candidature;
+
+  let noteTest = 0;
+  let totalTest = 0;
   const status = props.status;
+  if (status == 5) {
+    noteTest = candidature?.note;
+    totalTest = candidature?.total;
+    candidature = candidature?.candidature;
+  }
   const [updateStatusState, setUpdateStatusState] = useState<any>({
     open: false,
     message: "",
@@ -90,7 +98,12 @@ const CandidatureCard = (props: any) => {
             <div className="candidature-card-header">
               <h4>{`${candidature.utilisateur.nom} ${candidature.utilisateur.prenom}`}</h4>
               {status == CANDIDATURE_STATUS.selection && (
-                <div className="note">{candidature.note}</div>
+                <div className="note">{candidature?.note}</div>
+              )}
+              {status == CANDIDATURE_STATUS.test && (
+                <div className="note">
+                  {noteTest}/{totalTest}
+                </div>
               )}
             </div>
           }

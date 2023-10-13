@@ -22,6 +22,8 @@ const CandidatureList = (props: any) => {
       url += `/job/${idJob}/candidatures`;
     } else if (status == CANDIDATURE_STATUS.selection) {
       url += `/job/${idJob}/selections`;
+    } else if (status == CANDIDATURE_STATUS.test) {
+      url += `/job/${idJob}/tests`;
     }
     http
       .get(url)

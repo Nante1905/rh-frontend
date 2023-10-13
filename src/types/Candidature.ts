@@ -10,11 +10,11 @@ interface CvCritere {
   valide: boolean;
 }
 
-interface CvDiplome extends JobDiplome, CvCritere {}
+interface CvDiplome extends JobDiplome, CvCritere { }
 
-interface CvMatrimoniale extends Matrimoniale, CvCritere {}
+interface CvMatrimoniale extends Matrimoniale, CvCritere { }
 
-interface CvExperience extends Experience, CvCritere {}
+interface CvExperience extends Experience, CvCritere { }
 
 interface Fichier {
   diplome: string;
@@ -32,4 +32,5 @@ export interface Candidature {
   fichier: Fichier;
   note: number;
   status: number;
+  total: number;
 }

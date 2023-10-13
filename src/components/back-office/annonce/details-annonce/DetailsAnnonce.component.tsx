@@ -58,12 +58,12 @@ const DetailsAnnonce = (props: any) => {
           >
             <Tab value="1" label="Candidatures" />
             <Tab value="2" label="Sélection de dossier" />
-            <Tab value="3" label="Item Three" />
+            <Tab value="3" label="Résultat test" />
           </Tabs>
           {/* Component CandidatureList no antsoina, d any anaty component no mifetch */}
           {tab == "1" && <CandidatureList idJob={idJob} status={0} />}
           {tab == "2" && <CandidatureList idJob={idJob} status={3} />}
-          {tab == "3" && <h1>Nanao test</h1>}
+          {tab == "3" && <CandidatureList idJob={idJob} status={5} />}
         </div>
       </div>
     </>

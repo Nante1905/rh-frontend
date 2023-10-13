@@ -24,7 +24,7 @@ const FoCandidature = () => {
       <div className="annonce-root_container">
         {annonces?.candidatures?.map((e, index) => (
           <div className="annonce-card" key={index}>
-            <JobCard annonce={e.job} status={e.status} />
+            <JobCard annonce={e.job} status={e.status} candidature={e.id} />
           </div>
         ))}
       </div>
