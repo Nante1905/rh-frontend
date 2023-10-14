@@ -5,7 +5,7 @@
     
     overflow-y: scroll;
     padding-inline: 20px;
-    height: 50rem;
+    max-height: 50rem;
     
     &>* {
         width: 100%;

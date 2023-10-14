@@ -22,7 +22,7 @@ import HomePage from "./pages/frontoffice/home/HomePage.tsx";
 import QcmComponent from "./components/qcm/QcmComponent.tsx";
 import FoCandidature from "./components/front-office/candidature/foCandidature.component.tsx";
 import NavbarBackOffice from "./components/back-office/sidebar/NavbarBackOffice.tsx";
-import DataTable from "./components/data-table/DataTable.component.tsx";
+import Sidebar from "./components/sidebar/Sidebar.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -75,7 +75,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "test",
-        element: <DataTable />,
+        element: <Sidebar />,
       },
     ],
   },
