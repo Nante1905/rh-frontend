@@ -24,8 +24,15 @@
   }
   &_hour {
     display: grid;
-    margin-bottom: 5%;
     place-items: center;
+    margin-bottom: 10%;
+    gap: 5%;
+  }
+  &_age{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    margin-bottom: 5%;
   }
   &_salary {
     display: flex;
