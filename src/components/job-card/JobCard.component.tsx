@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const JobCard = (props: any) => {
   const [expanded, setExpanded] = useState<boolean>(false);
+  const [showChip, setShowChip] = useState<boolean>(true);
   const annonce = props.annonce;
   const frontOffice = props.frontOffice as boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -57,7 +58,10 @@ const JobCard = (props: any) => {
     if (status == 2) {
       return "Entretien";
     }
-    return "En attente";
+    if (status == 0) {
+      return "En attente";
+    }
+    setShowChip(false);
   };
 
   return (
@@ -65,7 +69,7 @@ const JobCard = (props: any) => {
       <CardHeader
         title={
           <>
-            <Chip label={getStatus(status)} color="success" />
+            {showChip && <Chip label={getStatus(status)} color="success" />}
             <h2>{annonce.title}</h2>{" "}
           </>
         }

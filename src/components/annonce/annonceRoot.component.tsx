@@ -98,8 +98,10 @@ const AnnonceRoot = () => {
               }
               label="Curiculum Vitae"
             >
-              {cvs.map((e) => (
-                <MenuItem value={e.id}>{e.nom}</MenuItem>
+              {cvs.map((e, i) => (
+                <MenuItem value={e.id} key={`cv_${i}`}>
+                  {e.nom}
+                </MenuItem>
               ))}
             </Select>
           </DialogContent>
