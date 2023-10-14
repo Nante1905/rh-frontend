@@ -2,5 +2,6 @@
 export const CANDIDATURE_STATUS = {
     postule: 0,
     selection: 3,
-    test: 5
+    test: 5,
+    entretien: 8
 }

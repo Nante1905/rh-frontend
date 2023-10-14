@@ -37,14 +37,16 @@
             }
         }
 
-        &-actions {
-            display: flex;
-            justify-content: space-around;
-            padding: 2% 0%;
-            flex-wrap: wrap;
-        }
     }
-
+    &-actions {
+        display: flex;
+        justify-content: center;
+        padding: 2% 0%;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 5%;
+    }
+    
     .icon {
         &.success {
             color: $success;

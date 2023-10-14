@@ -24,6 +24,8 @@ const CandidatureCard = (props: any) => {
   const [expanded, setExpanded] = useState<boolean>(false);
   let candidature: Candidature = props.candidature;
 
+  console.log(candidature);
+
   let noteTest = 0;
   let totalTest = 0;
   const status = props.status;
@@ -36,10 +38,11 @@ const CandidatureCard = (props: any) => {
     open: false,
     message: "",
     disableTestBtn: false,
+    disableEntretienBtn: false,
   });
 
   const addIcon = (state: boolean) => {
-    if (status == CANDIDATURE_STATUS.selection) {
+    if (status >= CANDIDATURE_STATUS.selection) {
       if (state) {
         return <GppGoodIcon className="icon success" />;
       }
@@ -51,6 +54,9 @@ const CandidatureCard = (props: any) => {
   useEffect(() => {
     if (candidature.status != 0) {
       setUpdateStatusState({ ...updateStatusState, disableTestBtn: true });
+    }
+    if (candidature.status == 2) {
+      setUpdateStatusState({ ...updateStatusState, disableEntretienBtn: true });
     }
   }, []);
 
@@ -87,6 +93,35 @@ const CandidatureCard = (props: any) => {
         });
         // setOpen(true);
         // setMessage(err.data);
+      });
+  };
+
+  const fairePasserEntretien = () => {
+    http
+      .put(`/candidatures/${candidature.id}`, {
+        status: 2,
+      })
+      .then((res: any) => {
+        if (res.OK) {
+          setUpdateStatusState({
+            open: true,
+            message: res.data.message,
+            disableEntretienBtn: true,
+          });
+        } else {
+          setUpdateStatusState({
+            ...updateStatusState,
+            open: true,
+            message: res.data.message,
+          });
+        }
+      })
+      .catch((err) => {
+        setUpdateStatusState({
+          ...updateStatusState,
+          open: true,
+          message: err.data,
+        });
       });
   };
 
@@ -135,6 +170,30 @@ const CandidatureCard = (props: any) => {
             >
               {expanded ? "Voir moins" : "Voir plus"}
             </Button>
+            {status == CANDIDATURE_STATUS.test && (
+              <div className="candidature-card-actions flex">
+                <Button
+                  className="div-success"
+                  variant="contained"
+                  onClick={() => fairePasserEntretien()}
+                  disabled={updateStatusState.disableEntretienBtn}
+                >
+                  Faire passer l'entretien
+                </Button>
+              </div>
+            )}
+            {status == CANDIDATURE_STATUS.entretien && (
+              <div className="candidature-card-actions flex">
+                <Button
+                  className="div-success"
+                  variant="contained"
+                  // onClick={() => fairePasserEntretien()}
+                  // disabled={updateStatusState.disableEntretienBtn}
+                >
+                  Embaucher
+                </Button>
+              </div>
+            )}
           </div>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <div className="candidature-card-collapse">

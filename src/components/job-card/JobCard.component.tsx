@@ -25,7 +25,7 @@ const JobCard = (props: any) => {
   const statusMap = ["En attente", "Test", "Entretien", "Embauche"];
 
   const navigate = useNavigate();
-  console.log("job carrrr " + candidature);
+  console.log("statuuus " + status);
 
   const renderStatusComponent = (status: number) => {
     if (status === 1) {
@@ -50,10 +50,25 @@ const JobCard = (props: any) => {
     }
   };
 
+  const getStatus = (status: number) => {
+    if (status == 1) {
+      return "Passez le test";
+    }
+    if (status == 2) {
+      return "Entretien";
+    }
+    return "En attente";
+  };
+
   return (
     <Card className="job-card">
       <CardHeader
-        title={<h2>{annonce.title}</h2>}
+        title={
+          <>
+            <Chip label={getStatus(status)} color="success" />
+            <h2>{annonce.title}</h2>{" "}
+          </>
+        }
         subheader={<h4>{annonce.jour}</h4>}
         className="job-card-header"
       />

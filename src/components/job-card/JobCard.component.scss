@@ -1,8 +1,13 @@
 @import '../../variables.module.scss';
 
+
 .job-card {
     margin: auto;
     width: 50%;
+    
+    .MuiChip-colorSuccess {
+        background-color: $success;
+    }
 
     &-item {
         margin: 2% 0%;
@@ -32,3 +37,4 @@
         background-color: $theme-color;
     }
 }
+

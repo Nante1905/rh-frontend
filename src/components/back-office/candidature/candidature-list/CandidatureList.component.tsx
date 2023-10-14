@@ -24,10 +24,14 @@ const CandidatureList = (props: any) => {
       url += `/job/${idJob}/selections`;
     } else if (status == CANDIDATURE_STATUS.test) {
       url += `/job/${idJob}/tests`;
+    } else if (status == CANDIDATURE_STATUS.entretien) {
+      url += `/job/${idJob}/entretiens`;
     }
     http
       .get(url)
       .then((res) => {
+        console.log(res);
+
         setCandidatures(res.data);
       })
       .catch((err) => {

@@ -21,7 +21,10 @@ const AnnonceList = () => {
         console.log(res);
         setAnnonces(res.data);
       })
-      .catch(() => {
+      .catch((err) => {
+        if (err.response.status == 401) {
+          navigate("/login");
+        }
         setError("Impossible de charger les annonces");
       });
   }, []);

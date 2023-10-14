@@ -8,6 +8,7 @@ import { Alert, Snackbar, Tab, Tabs } from "@mui/material";
 import { useLocation, useParams } from "react-router-dom";
 import CandidatureList from "../../candidature/candidature-list/CandidatureList.component";
 import { http } from "../../../../interceptors/requestInterceptor";
+import { CANDIDATURE_STATUS } from "../../../../constant/CandidatureStatus";
 
 const DetailsAnnonce = (props: any) => {
   const [annonce, setAnnonce] = useState<JobDetail | null>(null);
@@ -59,11 +60,30 @@ const DetailsAnnonce = (props: any) => {
             <Tab value="1" label="Candidatures" />
             <Tab value="2" label="Sélection de dossier" />
             <Tab value="3" label="Résultat test" />
+            <Tab value="4" label="Entretiens effectués" />
           </Tabs>
           {/* Component CandidatureList no antsoina, d any anaty component no mifetch */}
-          {tab == "1" && <CandidatureList idJob={idJob} status={0} />}
-          {tab == "2" && <CandidatureList idJob={idJob} status={3} />}
-          {tab == "3" && <CandidatureList idJob={idJob} status={5} />}
+          {tab == "1" && (
+            <CandidatureList
+              idJob={idJob}
+              status={CANDIDATURE_STATUS.postule}
+            />
+          )}
+          {tab == "2" && (
+            <CandidatureList
+              idJob={idJob}
+              status={CANDIDATURE_STATUS.selection}
+            />
+          )}
+          {tab == "3" && (
+            <CandidatureList idJob={idJob} status={CANDIDATURE_STATUS.test} />
+          )}
+          {tab == "4" && (
+            <CandidatureList
+              idJob={idJob}
+              status={CANDIDATURE_STATUS.entretien}
+            />
+          )}
         </div>
       </div>
     </>
