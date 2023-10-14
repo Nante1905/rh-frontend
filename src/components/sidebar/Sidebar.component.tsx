@@ -71,13 +71,8 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-const Sidebar = (props: any) => {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
-  const navigate = useNavigate();
-  const userName = decodeToken().sub;
-
-  const navItems = [
+const navItems = {
+  admin: [
     {
       text: "Annonces",
       link: "/admin",
@@ -88,7 +83,32 @@ const Sidebar = (props: any) => {
       link: "/job/create",
       icon: <MailIcon />,
     },
-  ];
+  ],
+  client: [
+    {
+      text: "Annonces",
+      link: "/client",
+      icon: <InboxIcon />,
+    },
+    {
+      text: "Mes candidatures",
+      link: "/client/candidatures",
+      icon: <MailIcon />,
+    },
+    {
+      text: "Mes entretiens",
+      link: "",
+      icon: <MailIcon />,
+    },
+  ],
+};
+
+const Sidebar = (props: any) => {
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(true);
+  const navigate = useNavigate();
+  const userName = decodeToken().sub;
+  const role: string = props.role;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -101,7 +121,7 @@ const Sidebar = (props: any) => {
   const generateContent = () => {
     return (
       <List>
-        {navItems.map((item, index) => (
+        {navItems[role as string].map((item, index) => (
           <ListItem
             key={`nav_${index}`}
             disablePadding

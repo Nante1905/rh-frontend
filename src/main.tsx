@@ -58,10 +58,6 @@ const routes = createBrowserRouter([
         element: <AnnonceRoot />,
       },
       {
-        path: "client",
-        element: <HomePage />,
-      },
-      {
         path: "candidatures",
         element: <FoCandidature />,
       },
@@ -87,6 +83,14 @@ const routes = createBrowserRouter([
       </FrontOffice>
     ),
     children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "candidatures",
+        element: <FoCandidature />,
+      },
       {
         path: "job/:id/qcm",
         element: <QcmComponent />,

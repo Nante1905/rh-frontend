@@ -67,11 +67,6 @@ const AnnonceRoot = () => {
   return (
     <div className="annonce-root">
       <h1>Liste des annonces</h1>
-      <div className="candidatures-btn">
-        <Button variant="contained" onClick={() => navigate("/candidatures")}>
-          Voir mes candidatures
-        </Button>
-      </div>
       <div className="annonce-root_container">
         {annonces.map((e, index) => (
           <div className="annonce-card" key={index}>

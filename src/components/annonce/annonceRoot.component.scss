@@ -18,6 +18,10 @@
     padding-block: 2rem;
     .job-card {
       width: 80% !important;
+
+      .MuiListItem-gutters {
+        width: 100%;
+      }
     }
     .apply-btn {
       padding-top: 1rem;

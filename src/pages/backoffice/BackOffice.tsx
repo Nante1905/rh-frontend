@@ -6,11 +6,7 @@ import Sidebar from "../../components/sidebar/Sidebar.component";
 const BackOffice = ({ children }: any) => {
   return (
     <>
-      {/* <div className="navbar">
-        <NavbarBackOffice />
-      </div>
-      <div className="children">{children}</div> */}
-      <Sidebar children={children} />
+      <Sidebar role="admin" children={children} />
     </>
   );
 };
