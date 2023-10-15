@@ -18,8 +18,8 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./Sidebar.component.scss";
-import { useNavigate } from "react-router";
 import decodeToken from "../../services/token/TokenService";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
