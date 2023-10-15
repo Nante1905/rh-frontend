@@ -17,6 +17,7 @@ import { authenticate } from "../../services/authentication.service";
 import { useState } from "react";
 import { Alert, Snackbar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import decodeToken from "../../services/token/TokenService";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -37,7 +38,13 @@ export default function SignIn() {
       authData,
       (token: string) => {
         sessionStorage.setItem("token", token);
-        navigate("/client");
+        const roles: string = decodeToken()?.roles;
+
+        if (roles?.includes("ADMIN")) {
+          navigate("/admin");
+        } else {
+          navigate("client");
+        }
       },
       (err: string) => setErrMessage(err)
     );
