@@ -29,8 +29,6 @@ import { ActionCreator } from "@reduxjs/toolkit";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import VilleSelect from "./ville-select/ville-select-component";
-import { store } from "../../../store/store";
-
 
 const JobInfo = () => {
   const navigate = useNavigate();
@@ -124,9 +122,6 @@ const JobInfo = () => {
 
   const handleSuivant = async (event: FormEvent) => {
     event.preventDefault();
-    console.log("JOBTITLE")
-    console.log(store.getState().jobTitle)
-    // const response = await axios.post('http://localhost:8080/444',{nom: JobTile});
     navigate("/critere");
   };
   return (
