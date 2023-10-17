@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TypeContrat, Ville } from "../../components/form-annonce/types/JobCriteria";
+
 
 export interface AnnonceForm {
   jobTitle: string;
@@ -8,6 +8,7 @@ export interface AnnonceForm {
   nbrPersonne:number;
   ageMin:number;
   ageMax:number;
+  mission:string;
   salaireMin: number;
   salaireMax: number;
   typeContratId:number;
@@ -21,6 +22,7 @@ const initialState: AnnonceForm = {
   nbrPersonne:0,
   ageMin:0,
   ageMax:0,
+  mission:"",
   salaireMin: 0,
   salaireMax: 0,
   typeContratId:1,
@@ -50,6 +52,9 @@ export const AnnonceFormSlice = createSlice({
       state.ageMax = action.payload;
       console.log(state.ageMax)
     },
+    setMission: (state, action) => {
+      state.mission = action.payload;
+    },
     setSalaireMin: (state, action) => {
       state.salaireMin = action.payload;
     },
@@ -72,6 +77,7 @@ export const {
   setNbrePersonne,
   setAgeMin,
   setAgeMax,
+  setMission,
   setSalaireMin,
   setSalaireMax,
   setTypeContratId,

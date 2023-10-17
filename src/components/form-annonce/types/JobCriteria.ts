@@ -78,6 +78,7 @@ export interface JobDetail {
   nbr_personne: number;
   min_age: number;
   max_age: number;
+  mission:string;
   jour?: string;
   service: Service;
   jobDiplome: JobDiplome;

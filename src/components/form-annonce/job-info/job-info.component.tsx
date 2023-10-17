@@ -20,6 +20,7 @@ import {
   setNbrePersonne,
   setAgeMin,
   setAgeMax,
+  setMission,
   setVilleId,
   setTypeContratId,
 } from "../../../store/annonce/annonceSlice";
@@ -29,12 +30,15 @@ import { ActionCreator } from "@reduxjs/toolkit";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import VilleSelect from "./ville-select/ville-select-component";
+import RichText from "./TestRichText/RichTest.component";
 
 const JobInfo = () => {
   const navigate = useNavigate();
   const location = useLocation(); //get param from route
   const [successInserted, setSuccessInserted] = useState<boolean>();
 
+
+  
   useEffect(() => {
     if (location.state == null) {
       setSuccessInserted(false);
@@ -92,7 +96,6 @@ const JobInfo = () => {
   }, []);
   
 
-
   const dispatch = useDispatch();
   const selectedValue: number = useSelector(getService);
   const selectedVille: number = useSelector(getVilleId);
@@ -108,6 +111,9 @@ const JobInfo = () => {
   };
 
   //
+  const handleRichTextContentChange = (content: string) => {
+    dispatch(setMission(content));
+  };
   const handleChangeSelect = (event: SelectChangeEvent) => {
     dispatch(setService(event.target.value));
   };
@@ -147,7 +153,12 @@ const JobInfo = () => {
               required
             />
           </div>
+          <br />
           <div className="job-info_hour">
+          <div>
+          <RichText onContentChange={handleRichTextContentChange} />
+            
+          </div>
             <TextField
               variant="outlined"
               label="Volume horaire"
@@ -187,7 +198,7 @@ const JobInfo = () => {
               required
             />
           </div>
-
+          
           <br />
           <div className="job-info_age">
             <TextField

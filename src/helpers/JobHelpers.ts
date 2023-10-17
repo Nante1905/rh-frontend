@@ -15,13 +15,14 @@ export const buildFormAnnonceData = (
     sal_max: jobInfo.salaireMax,
     min_age: jobInfo.ageMin,
     max_age: jobInfo.ageMax,
+    mission:jobInfo.mission,
     nbr_personne:jobInfo.nbrPersonne,
     service: {
       id: jobInfo.service,
     },
     ville: {
       id: jobInfo.villeId,
-    },
+    },tre
     typeContrat: {
       id: jobInfo.typeContratId,
     },
