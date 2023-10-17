@@ -22,7 +22,7 @@ export const buildFormAnnonceData = (
     },
     ville: {
       id: jobInfo.villeId,
-    },tre
+    },
     typeContrat: {
       id: jobInfo.typeContratId,
     },
