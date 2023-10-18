@@ -22,7 +22,11 @@ import HomePage from "./pages/frontoffice/home/HomePage.tsx";
 import QcmComponent from "./components/qcm/QcmComponent.tsx";
 import FoCandidature from "./components/front-office/candidature/foCandidature.component.tsx";
 import NavbarBackOffice from "./components/back-office/sidebar/NavbarBackOffice.tsx";
-import Sidebar from "./components/sidebar/Sidebar.component.tsx";
+import ContratFormRoot from "./components/contrat/container/contrat-form-root/contrat-form-root.component.tsx";
+import { contratStore } from "./components/contrat/store/contrat.store.ts";
+import Notification from "./components/front-office/notification/Notification.component.tsx";
+import Contrat from "./components/front-office/fo-contrat/components/contrat-read/ContratRead.component.tsx";
+import ContratRead from "./components/front-office/fo-contrat/components/contrat-read/ContratRead.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -71,7 +75,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "test",
-        element: <Sidebar />,
+        element: <Contrat />,
       },
     ],
   },
@@ -95,14 +99,24 @@ const routes = createBrowserRouter([
         path: "job/:id/qcm",
         element: <QcmComponent />,
       },
+      {
+        path: "notifications",
+        element: <Notification />,
+      },
+      {
+        path: "contrats/:id",
+        element: <ContratRead />,
+      },
     ],
   },
   {
     path: "admin",
     element: (
-      <BackOffice>
-        <Outlet />
-      </BackOffice>
+      <Provider store={contratStore}>
+        <BackOffice>
+          <Outlet />
+        </BackOffice>
+      </Provider>
     ),
     children: [
       {
@@ -114,6 +128,14 @@ const routes = createBrowserRouter([
         element: <DetailsAnnonce />,
       },
     ],
+  },
+  {
+    path: "test",
+    element: (
+      <Provider store={contratStore}>
+        <ContratFormRoot />
+      </Provider>
+    ),
   },
 ]);
 
