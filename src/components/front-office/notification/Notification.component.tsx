@@ -9,7 +9,7 @@ const Notification = () => {
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     http
-      .get("/contrats/utilisateurs")
+      .get("/contrats/utilisateurs/pending")
       .then((res) => {
         console.log(res);
         setContrats(res.data);
