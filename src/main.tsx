@@ -22,7 +22,8 @@ import HomePage from "./pages/frontoffice/home/HomePage.tsx";
 import QcmComponent from "./components/qcm/QcmComponent.tsx";
 import FoCandidature from "./components/front-office/candidature/foCandidature.component.tsx";
 import NavbarBackOffice from "./components/back-office/sidebar/NavbarBackOffice.tsx";
-import Sidebar from "./components/sidebar/Sidebar.component.tsx";
+import ContratFormRoot from "./components/contrat/container/contrat-form-root/contrat-form-root.component.tsx";
+import { contratStore } from "./components/contrat/store/contrat.store.ts";
 
 const routes = createBrowserRouter([
   {
@@ -69,10 +70,6 @@ const routes = createBrowserRouter([
         path: "navbar",
         element: <NavbarBackOffice />,
       },
-      {
-        path: "test",
-        element: <Sidebar />,
-      },
     ],
   },
   {
@@ -114,6 +111,14 @@ const routes = createBrowserRouter([
         element: <DetailsAnnonce />,
       },
     ],
+  },
+  {
+    path: "test",
+    element: (
+      <Provider store={contratStore}>
+        <ContratFormRoot />
+      </Provider>
+    ),
   },
 ]);
 
