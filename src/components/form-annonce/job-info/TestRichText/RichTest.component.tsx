@@ -1,19 +1,20 @@
-import React from 'react';
+import React from "react";
 import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { 
-    MenuControlsContainer,
-    MenuSelectHeading,
-    MenuDivider,
-    RichTextEditorProvider, 
-    RichTextField, 
-    MenuButtonBold, 
-    MenuButtonItalic, 
-} from 'mui-tiptap';
-import './RichTest.components.scss'; 
+import {
+  MenuControlsContainer,
+  MenuSelectHeading,
+  MenuDivider,
+  RichTextEditorProvider,
+  RichTextField,
+  MenuButtonBold,
+  MenuButtonItalic,
+  MenuButtonBulletedList,
+} from "mui-tiptap";
+import "./RichTest.components.scss";
 
 interface RichTextProps {
-  onContentChange: (content: string) => void; 
+  onContentChange: (content: string) => void;
 }
 
 function RichText({ onContentChange }: RichTextProps) {
@@ -22,12 +23,14 @@ function RichText({ onContentChange }: RichTextProps) {
     content: "",
     onUpdate: ({ editor }) => {
       onContentChange(editor.getText());
-    }
+    },
   });
 
   return (
     <div className="richTextContainer">
-      <label htmlFor="mission" className="label">Mission:</label>
+      <label htmlFor="mission" className="label">
+        Mission:
+      </label>
       <RichTextEditorProvider editor={editor}>
         <RichTextField
           controls={
@@ -36,6 +39,7 @@ function RichText({ onContentChange }: RichTextProps) {
               <MenuDivider />
               <MenuButtonBold />
               <MenuButtonItalic />
+              <MenuButtonBulletedList />
             </MenuControlsContainer>
           }
         />

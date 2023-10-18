@@ -6,6 +6,12 @@
   width: 50%;
   margin: auto;
 
+  &_flex {
+    display: flex;
+    justify-content: space-around;
+    margin: 5% 0%;
+  }
+
   form {
     padding: 8%;
     margin-block: 2%;

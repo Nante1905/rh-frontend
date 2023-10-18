@@ -24,11 +24,15 @@ import {
   setVilleId,
   setTypeContratId,
 } from "../../../store/annonce/annonceSlice";
-import { getService, getTypeContratId, getVilleId } from "../../../store/annonce/selector";
+import {
+  getService,
+  getTypeContratId,
+  getVilleId,
+} from "../../../store/annonce/selector";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { ActionCreator } from "@reduxjs/toolkit";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import VilleSelect from "./ville-select/ville-select-component";
 import RichText from "./TestRichText/RichTest.component";
 
@@ -37,8 +41,6 @@ const JobInfo = () => {
   const location = useLocation(); //get param from route
   const [successInserted, setSuccessInserted] = useState<boolean>();
 
-
-  
   useEffect(() => {
     if (location.state == null) {
       setSuccessInserted(false);
@@ -52,15 +54,15 @@ const JobInfo = () => {
   const services: Service[] = [
     {
       id: 1,
-      name: "RH",
+      nom_service: "RH",
     },
     {
       id: 2,
-      name: "Compta",
+      nom_service: "Compta",
     },
     {
       id: 3,
-      name: "Production",
+      nom_service: "Production",
     },
   ];
 
@@ -69,45 +71,49 @@ const JobInfo = () => {
   useEffect(() => {
     const fetchTypeContrats = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/contrats');
+        const response = await axios.get("http://localhost:8080/contrats");
         setTypeContrats(response.data);
       } catch (error) {
-        console.error('Erreur lors de la récupération des types de contrat :', error);
+        console.error(
+          "Erreur lors de la récupération des types de contrat :",
+          error
+        );
       }
     };
-  
+
     fetchTypeContrats();
   }, []);
-  
 
   //ville
   const [ville, setVille] = useState<Ville[]>([]);
   useEffect(() => {
     const fetchVille = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/ville');
+        const response = await axios.get("http://localhost:8080/ville");
         setVille(response.data);
       } catch (error) {
-        console.error('Erreur lors de la récupération des types de contrat :', error);
+        console.error(
+          "Erreur lors de la récupération des types de contrat :",
+          error
+        );
       }
     };
-  
+
     fetchVille();
   }, []);
-  
 
   const dispatch = useDispatch();
   const selectedValue: number = useSelector(getService);
   const selectedVille: number = useSelector(getVilleId);
   const selectedTypeContrat: number = useSelector(getTypeContratId);
-  
+
   const handleChangeVille = (event: SelectChangeEvent) => {
-    const selectedId = event.target.value;  // L'ID est stocké dans event.target.value
-    dispatch(setVilleId(selectedId))
+    const selectedId = event.target.value; // L'ID est stocké dans event.target.value
+    dispatch(setVilleId(selectedId));
   };
   const handleChangeTypeContrat = (event: SelectChangeEvent) => {
-    const selectedId = event.target.value;  // L'ID est stocké dans event.target.value
-    dispatch(setTypeContratId(selectedId))
+    const selectedId = event.target.value; // L'ID est stocké dans event.target.value
+    dispatch(setTypeContratId(selectedId));
   };
 
   //
@@ -153,12 +159,16 @@ const JobInfo = () => {
               required
             />
           </div>
-          <br />
-          <div className="job-info_hour">
-          <div>
-          <RichText onContentChange={handleRichTextContentChange} />
-            
+          <div className="job-info">
+            <TypeContratSelect
+              option={typeContrats}
+              selectLabel="Type de Contrat"
+              selectValue={selectedTypeContrat}
+              onChange={handleChangeTypeContrat}
+              required
+            />
           </div>
+          <div className="job-info_flex">
             <TextField
               variant="outlined"
               label="Volume horaire"
@@ -169,22 +179,6 @@ const JobInfo = () => {
               }}
               onChange={(event) => handleChangeInput(event, setVolumeHoraire)}
               required
-            />
-            <br />
-            <TypeContratSelect
-              option={typeContrats}
-              selectLabel="Type de Contrat"
-              selectValue={selectedTypeContrat}
-              onChange={handleChangeTypeContrat }
-              required
-            />
-            <br />
-            <VilleSelect
-              option={ville}
-                selectLabel="Ville"
-                selectValue={selectedVille}
-                onChange={handleChangeVille }
-                required
             />
             <TextField
               variant="outlined"
@@ -198,9 +192,19 @@ const JobInfo = () => {
               required
             />
           </div>
-          
-          <br />
+          <div>
+            <RichText onContentChange={handleRichTextContentChange} />
+          </div>
           <div className="job-info_age">
+            <VilleSelect
+              option={ville}
+              selectLabel="Ville"
+              selectValue={selectedVille}
+              onChange={handleChangeVille}
+              required
+            />
+          </div>
+          <div className="job-info_flex">
             <TextField
               variant="outlined"
               label="Age min"
@@ -217,7 +221,7 @@ const JobInfo = () => {
             />
           </div>
 
-          <div className="job-info_salary">
+          <div className="job-info_flex">
             <TextField
               variant="outlined"
               label="Salaire min"
