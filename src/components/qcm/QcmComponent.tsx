@@ -11,7 +11,7 @@ import { setQcm } from "../../store/qcm-form/qcmSlice";
 import { Qcm, Test, TestReponse } from "../../types/Qcm";
 import { Button, Card, CardContent } from "@mui/material";
 import AnswerComponent from "../answer/AnswerComponent";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { RootState, store } from "../../store/store";
 
 const QcmComponent = () => {
@@ -20,6 +20,7 @@ const QcmComponent = () => {
   const params = useParams();
   const idJob = params.id;
   const location = useLocation();
+  const navigate = useNavigate();
   console.log(location.state.candidature);
 
   useEffect(() => {
@@ -52,7 +53,7 @@ const QcmComponent = () => {
     console.log(data);
 
     sendTest(data)
-      .then((res) => console.log(res))
+      .then((res) => navigate("/client/candidatures"))
       .catch((err) => console.error(err));
   };
 

@@ -67,13 +67,13 @@ const JobCard = (props: any) => {
   return (
     <Card className="job-card">
       <CardHeader
+        subheader={<h4>{annonce.jour}</h4>}
         title={
           <>
             {showChip && <Chip label={getStatus(status)} color="success" />}
             <h2>{annonce.title}</h2>{" "}
           </>
         }
-        subheader={<h4>{annonce.jour}</h4>}
         className="job-card-header"
       />
       <CardContent>

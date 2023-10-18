@@ -1,3 +1,4 @@
+
 import { Question } from "../../../types/QuestionClass";
 
 export interface Diplome {
@@ -59,12 +60,25 @@ export interface Questionnaire {
   questions: Question[]
 }
 
+export interface TypeContrat {
+  id?: number;
+  type_contrat?: string;
+}
+
+export interface Ville {
+  id?: number;
+  nom?: string;
+}
+
 export interface JobDetail {
   title: string;
   volume: number;
-  man_day: number;
   sal_min: number;
   sal_max: number;
+  nbr_personne: number;
+  min_age: number;
+  max_age: number;
+  mission:string;
   jour?: string;
   service: Service;
   jobDiplome: JobDiplome;
@@ -72,5 +86,7 @@ export interface JobDetail {
   jobMatrimoniale: JobMatrimoniale;
   jobNationalite: JobNationalite;
   jobSexe: JobSex;
-  questionnaire: Questionnaire
+  questionnaire: Questionnaire;
+  typeContrat: TypeContrat;
+  ville: Ville;
 }

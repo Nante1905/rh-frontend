@@ -1,20 +1,40 @@
-import { Alert, Button, InputAdornment, Snackbar } from "@mui/material";
+import {
+  Alert,
+  Button,
+  InputAdornment,
+  SelectChangeEvent,
+  Snackbar,
+} from "@mui/material";
 import TextField from "@mui/material/TextField";
 import "./job-info.components.scss";
-import { useDispatch } from "react-redux";
+import TypeContratSelect from "./type-contrat-select/type-contrat-select.component";
+import { Service, TypeContrat, Ville } from "../types/JobCriteria";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setJobTile,
   setSalaireMax,
   setSalaireMin,
   setService,
-  setTauxHJ,
   setVolumeHoraire,
+  setNbrePersonne,
+  setAgeMin,
+  setAgeMax,
+  setMission,
+  setVilleId,
+  setTypeContratId,
 } from "../../../store/annonce/annonceSlice";
+import {
+  getService,
+  getTypeContratId,
+  getVilleId,
+} from "../../../store/annonce/selector";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { getCurrentService } from "../../../services/form-annonce/form-annonce.service";
 import { ActionCreator } from "@reduxjs/toolkit";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getCurrentService } from "../../../services/form-annonce/form-annonce.service";
-import { Service } from "../types/JobCriteria";
+import axios from "axios";
+import VilleSelect from "./ville-select/ville-select-component";
+import RichText from "./TestRichText/RichTest.component";
 
 const JobInfo = () => {
   const navigate = useNavigate();
@@ -46,6 +66,78 @@ const JobInfo = () => {
     );
   }, []);
 
+  const services: Service[] = [
+    {
+      id: 1,
+      nom_service: "RH",
+    },
+    {
+      id: 2,
+      nom_service: "Compta",
+    },
+    {
+      id: 3,
+      nom_service: "Production",
+    },
+  ];
+
+  //typecontrat
+  const [typeContrats, setTypeContrats] = useState<TypeContrat[]>([]);
+  useEffect(() => {
+    const fetchTypeContrats = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/contrats");
+        setTypeContrats(response.data);
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des types de contrat :",
+          error
+        );
+      }
+    };
+
+    fetchTypeContrats();
+  }, []);
+
+  //ville
+  const [ville, setVille] = useState<Ville[]>([]);
+  useEffect(() => {
+    const fetchVille = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/ville");
+        setVille(response.data);
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des types de contrat :",
+          error
+        );
+      }
+    };
+
+    fetchVille();
+  }, []);
+
+  const selectedValue: number = useSelector(getService);
+  const selectedVille: number = useSelector(getVilleId);
+  const selectedTypeContrat: number = useSelector(getTypeContratId);
+
+  const handleChangeVille = (event: SelectChangeEvent) => {
+    const selectedId = event.target.value; // L'ID est stocké dans event.target.value
+    dispatch(setVilleId(selectedId));
+  };
+  const handleChangeTypeContrat = (event: SelectChangeEvent) => {
+    const selectedId = event.target.value; // L'ID est stocké dans event.target.value
+    dispatch(setTypeContratId(selectedId));
+  };
+
+  //
+  const handleRichTextContentChange = (content: string) => {
+    dispatch(setMission(content));
+  };
+  const handleChangeSelect = (event: SelectChangeEvent) => {
+    dispatch(setService(event.target.value));
+  };
+
   const handleChangeInput = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -54,11 +146,10 @@ const JobInfo = () => {
     dispatch(action(event.target.value));
   };
 
-  const handleSuivant = (event: FormEvent) => {
+  const handleSuivant = async (event: FormEvent) => {
     event.preventDefault();
     navigate("/critere");
   };
-
   return (
     <div className="bg__blue main__container">
       <div className="job-info">
@@ -89,7 +180,16 @@ const JobInfo = () => {
               disabled
             />
           </div>
-          <div className="job-info_hour">
+          <div className="job-info">
+            <TypeContratSelect
+              option={typeContrats}
+              selectLabel="Type de Contrat"
+              selectValue={selectedTypeContrat}
+              onChange={handleChangeTypeContrat}
+              required
+            />
+          </div>
+          <div className="job-info_flex">
             <TextField
               variant="outlined"
               label="Volume horaire"
@@ -101,20 +201,48 @@ const JobInfo = () => {
               onChange={(event) => handleChangeInput(event, setVolumeHoraire)}
               required
             />
-            <br />
             <TextField
               variant="outlined"
-              label="Taux homme-jour"
+              label="Nombre de personne"
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="end">Homme/jr</InputAdornment>
+                  <InputAdornment position="end">Pers/job</InputAdornment>
                 ),
               }}
-              onChange={(event) => handleChangeInput(event, setTauxHJ)}
+              onChange={(event) => handleChangeInput(event, setNbrePersonne)}
               required
             />
           </div>
-          <div className="job-info_salary">
+          <div>
+            <RichText onContentChange={handleRichTextContentChange} />
+          </div>
+          <div className="job-info_age">
+            <VilleSelect
+              option={ville}
+              selectLabel="Ville"
+              selectValue={selectedVille}
+              onChange={handleChangeVille}
+              required
+            />
+          </div>
+          <div className="job-info_flex">
+            <TextField
+              variant="outlined"
+              label="Age min"
+              type="number"
+              onChange={(event) => handleChangeInput(event, setAgeMin)}
+              required
+            />
+            <TextField
+              variant="outlined"
+              label="Age max"
+              type="number"
+              onChange={(event) => handleChangeInput(event, setAgeMax)}
+              required
+            />
+          </div>
+
+          <div className="job-info_flex">
             <TextField
               variant="outlined"
               label="Salaire min"
