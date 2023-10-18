@@ -26,6 +26,8 @@ const ContratForm = (props) => {
   const contratOpts: TypeContrat[] = props.typeContrats;
   const avantages: Avantage[] = props.avantages;
   const categories: Categorie[] = props.categories;
+  const idJob = props.idJob;
+  const job = props.job;
 
   const dispatch = useDispatch();
   const salaireBrut = useSelector(
@@ -40,7 +42,7 @@ const ContratForm = (props) => {
     form = {
       ...form,
       job: {
-        idJob: 2,
+        idJob: idJob,
       },
       categorie: {
         id: form.categorie,
@@ -68,7 +70,7 @@ const ContratForm = (props) => {
     <div className="contrat-form">
       <div className="contrat-form_container">
         <div className="head">
-          <h1>Contrat de travail</h1>
+          <h1>Contrat de travail {job} </h1>
         </div>
         <div className="form">
           <form action="" onSubmit={(event) => onSubmitForm(event)}>
@@ -119,7 +121,7 @@ const ContratForm = (props) => {
                 }
                 value={salaireBrut.toLocaleString()}
               />
-              <TextField label="Poste" value={poste} disabled />
+              {/* <TextField label="Poste" value={poste} disabled /> */}
               <ServiceSelect
                 selectLabel="Categorie"
                 option={categories}

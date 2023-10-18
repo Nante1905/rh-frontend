@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable unused-imports/no-unused-vars */
 import { useEffect } from "react";
 import ContratForm from "../../components/contrat-form/contrat-form.components";
 import "./contrat-form-root.component.scss";
@@ -9,8 +11,10 @@ import {
   setTypeContratOptions,
 } from "../../store/slice/contrat.slice";
 import { ContratState } from "../../store/contrat.store";
-const ContratFormRoot = () => {
+const ContratFormRoot = (props: any) => {
   const dispatch = useDispatch();
+  const jobTitle = props.job;
+  const idJob = props.idJob;
   const typeContrats = useSelector(
     (state: ContratState) => state.contrat.typeContratOptions
   );
@@ -27,6 +31,10 @@ const ContratFormRoot = () => {
       .get("contrats/types")
       .then((res) => {
         if (res.data.OK === true) {
+          console.log("OPTIONS CONTRAT");
+
+          console.log(res.data.data);
+
           dispatch(setTypeContratOptions(res.data.data));
         }
       })
@@ -53,6 +61,8 @@ const ContratFormRoot = () => {
       typeContrats={typeContrats}
       avantages={avantages}
       categories={categories}
+      idJob={idJob}
+      job={jobTitle}
     />
   );
 };

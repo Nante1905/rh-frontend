@@ -9,6 +9,8 @@ import {
   CardContent,
   CardHeader,
   Collapse,
+  Dialog,
+  DialogActions,
   List,
   ListItem,
   Snackbar,
@@ -19,9 +21,13 @@ import { CANDIDATURE_STATUS } from "../../../../constant/CandidatureStatus";
 import GppGoodIcon from "@mui/icons-material/GppGood";
 import { GppBad } from "@mui/icons-material";
 import { http } from "../../../../interceptors/requestInterceptor";
+import ContratFormRoot from "../../../contrat/container/contrat-form-root/contrat-form-root.component";
 
 const CandidatureCard = (props: any) => {
   const [expanded, setExpanded] = useState<boolean>(false);
+  const [openContrat, setOpenContrat] = useState<boolean>(false);
+  const jobTitle = props.job;
+  const idJob = props.idJob;
   let candidature: Candidature = props.candidature;
 
   console.log(candidature);
@@ -187,11 +193,24 @@ const CandidatureCard = (props: any) => {
                 <Button
                   className="div-success"
                   variant="contained"
-                  // onClick={() => fairePasserEntretien()}
+                  onClick={() => setOpenContrat(true)}
                   // disabled={updateStatusState.disableEntretienBtn}
                 >
                   Embaucher
                 </Button>
+                <Dialog open={openContrat} fullWidth={true} maxWidth={"lg"}>
+                  {/* <Provider store={contratStore}> */}
+                  <ContratFormRoot idJob={idJob} job={jobTitle} />
+                  {/* </Provider> */}
+                  <DialogActions>
+                    <Button
+                      className="div-danger"
+                      onClick={() => setOpenContrat(false)}
+                    >
+                      Annuler la rédaction
+                    </Button>
+                  </DialogActions>
+                </Dialog>
               </div>
             )}
           </div>

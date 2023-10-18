@@ -24,6 +24,7 @@ import FoCandidature from "./components/front-office/candidature/foCandidature.c
 import NavbarBackOffice from "./components/back-office/sidebar/NavbarBackOffice.tsx";
 import ContratFormRoot from "./components/contrat/container/contrat-form-root/contrat-form-root.component.tsx";
 import { contratStore } from "./components/contrat/store/contrat.store.ts";
+import Notification from "./components/front-office/notification/Notification.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -92,14 +93,20 @@ const routes = createBrowserRouter([
         path: "job/:id/qcm",
         element: <QcmComponent />,
       },
+      {
+        path: "notifications",
+        element: <Notification />,
+      },
     ],
   },
   {
     path: "admin",
     element: (
-      <BackOffice>
-        <Outlet />
-      </BackOffice>
+      <Provider store={contratStore}>
+        <BackOffice>
+          <Outlet />
+        </BackOffice>
+      </Provider>
     ),
     children: [
       {
