@@ -35,6 +35,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import VilleSelect from "./ville-select/ville-select-component";
 import RichText from "./TestRichText/RichTest.component";
+import { http } from "../../../interceptors/requestInterceptor";
 
 const JobInfo = () => {
   const navigate = useNavigate();
@@ -86,8 +87,8 @@ const JobInfo = () => {
   useEffect(() => {
     const fetchTypeContrats = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/contrats");
-        setTypeContrats(response.data);
+        const response = await http.get("/contrats/types");
+        setTypeContrats(response.data.data);
       } catch (error) {
         console.error(
           "Erreur lors de la récupération des types de contrat :",

@@ -62,7 +62,7 @@ export interface Questionnaire {
 
 export interface TypeContrat {
   id?: number;
-  type_contrat?: string;
+  nom?: string;
 }
 
 export interface Ville {
@@ -78,7 +78,7 @@ export interface JobDetail {
   nbr_personne: number;
   min_age: number;
   max_age: number;
-  mission:string;
+  mission: string;
   jour?: string;
   service: Service;
   jobDiplome: JobDiplome;

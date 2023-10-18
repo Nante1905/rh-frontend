@@ -69,7 +69,7 @@ const QuestionnairePage = () => {
       )
       .then((res) => {
         console.log(res);
-        navigate("/", { state: { success: true } });
+        navigate("/admin", { state: { success: true } });
       })
       .catch((err) => {
         console.error(err);
