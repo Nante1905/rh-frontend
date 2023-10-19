@@ -200,7 +200,11 @@ const CandidatureCard = (props: any) => {
                 </Button>
                 <Dialog open={openContrat} fullWidth={true} maxWidth={"lg"}>
                   {/* <Provider store={contratStore}> */}
-                  <ContratFormRoot idJob={idJob} job={jobTitle} />
+                  <ContratFormRoot
+                    idJob={idJob}
+                    job={jobTitle}
+                    idUtilisateur={candidature.utilisateur.id}
+                  />
                   {/* </Provider> */}
                   <DialogActions>
                     <Button

@@ -23,6 +23,7 @@ import { http } from "../../../../interceptors/requestInterceptor";
 
 const ContratForm = (props) => {
   const poste: string = props?.poste;
+  const idUtilisateur: number = props.idUtilisateur;
   const contratOpts: TypeContrat[] = props.typeContrats;
   const avantages: Avantage[] = props.avantages;
   const categories: Categorie[] = props.categories;
@@ -48,7 +49,7 @@ const ContratForm = (props) => {
         id: form.categorie,
       },
       utilisateur: {
-        id: 1,
+        id: idUtilisateur,
       },
       type: {
         id: form.typeContrat,

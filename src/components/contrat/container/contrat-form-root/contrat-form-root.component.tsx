@@ -15,6 +15,7 @@ const ContratFormRoot = (props: any) => {
   const dispatch = useDispatch();
   const jobTitle = props.job;
   const idJob = props.idJob;
+  const idUtilisateur = props.idUtilisateur;
   const typeContrats = useSelector(
     (state: ContratState) => state.contrat.typeContratOptions
   );
@@ -63,6 +64,7 @@ const ContratFormRoot = (props: any) => {
       categories={categories}
       idJob={idJob}
       job={jobTitle}
+      idUtilisateur={idUtilisateur}
     />
   );
 };
