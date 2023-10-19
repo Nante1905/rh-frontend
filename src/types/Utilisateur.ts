@@ -20,6 +20,7 @@ export interface Utilisateur {
   nom: string;
   prenom: string;
   naissance: string;
+  age: number,
   email: string;
   telephone: string;
   mdp?: string;

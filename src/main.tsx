@@ -25,8 +25,8 @@ import NavbarBackOffice from "./components/back-office/sidebar/NavbarBackOffice.
 import ContratFormRoot from "./components/contrat/container/contrat-form-root/contrat-form-root.component.tsx";
 import { contratStore } from "./components/contrat/store/contrat.store.ts";
 import Notification from "./components/front-office/notification/Notification.component.tsx";
-import Contrat from "./components/front-office/fo-contrat/components/contrat-read/ContratRead.component.tsx";
 import ContratRead from "./components/front-office/fo-contrat/components/contrat-read/ContratRead.component.tsx";
+import EmployeListRoot from "./components/back-office/employe/container/employe-list-root.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -72,10 +72,6 @@ const routes = createBrowserRouter([
       {
         path: "navbar",
         element: <NavbarBackOffice />,
-      },
-      {
-        path: "test",
-        element: <Contrat />,
       },
     ],
   },
@@ -126,6 +122,10 @@ const routes = createBrowserRouter([
       {
         path: "annonces/:id/candidatures",
         element: <DetailsAnnonce />,
+      },
+      {
+        path: "employes",
+        element: <EmployeListRoot />,
       },
     ],
   },

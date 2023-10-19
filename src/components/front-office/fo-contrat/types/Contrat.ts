@@ -24,6 +24,7 @@ export interface Contrat {
     salaireBrut: number,
     debut: string,
     fin: string,
+    anciennete: string,
     creation: string,
     avantages: Avantage[],
     categorie: Categorie

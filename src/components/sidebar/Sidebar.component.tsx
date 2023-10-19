@@ -84,6 +84,11 @@ const navItems = {
       link: "/job/create",
       icon: <MailIcon />,
     },
+    {
+      text: "Liste du personnel",
+      link: "/admin/employes",
+      icon: <MailIcon />,
+    },
   ],
   client: [
     {
