@@ -9,5 +9,6 @@ export interface EmployeTab {
     contrat: string,
     anciennete: string,
     debutContrat: string,
-    categorie: string
+    categorie: string,
+    presence: boolean
 }

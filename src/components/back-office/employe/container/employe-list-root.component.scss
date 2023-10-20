@@ -1,4 +1,5 @@
 .circular_loading {
     width: 100%;
-    margin: auto;
+    display: grid;
+    place-content: center;
 }

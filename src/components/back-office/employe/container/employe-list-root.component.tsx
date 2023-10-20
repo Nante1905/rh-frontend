@@ -30,12 +30,12 @@ const EmployeListRoot = () => {
         .then((res) => {
           console.log(res.data);
           setEmps(res.data);
-          // setLoad({ loaded: true, loading: false });
+          setLoad({ loaded: true, loading: false });
         })
         .catch((err) => {
           console.error(err);
         });
-    }, 2000);
+    }, 1000);
   };
 
   const displayTable = () => {

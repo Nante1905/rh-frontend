@@ -1,9 +1,11 @@
 $theme-color: #317B93;
 $success: #27b81f;
 $danger: #c93e3e;
+$warning: rgb(229, 166, 48);
 
 :export {
   themeColor: $theme-color;
   success: $success;
   danger: $danger;
+  warning: $warning;
 }

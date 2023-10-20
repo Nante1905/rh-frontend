@@ -7,6 +7,7 @@ import {
   GridValueGetterParams,
   frFR,
 } from "@mui/x-data-grid";
+import { Chip } from "@mui/material";
 
 const EmployeList = (props: any) => {
   const columns: GridColDef[] = [
@@ -31,6 +32,17 @@ const EmployeList = (props: any) => {
     },
     { field: "debutContrat", headerName: "Embauche", width: 100 },
     { field: "categorie", headerName: "Catégorie", width: 90 },
+    {
+      field: "presence",
+      headerName: "Status",
+      width: 120,
+      renderCell: (params) => {
+        if (params.row.presence == false) {
+          return <Chip label="Congé" className="div-danger" />;
+        }
+        return <Chip label="Présent" className="div-success" />;
+      },
+    },
   ];
 
   const emps = props.emps;
