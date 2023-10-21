@@ -5,6 +5,7 @@ export const getService = (state: RootState) => state.annonceForm.service;
 
 export const getVilleId = (state: RootState) => state.annonceForm.villeId;
 export const getTypeContratId = (state: RootState) => state.annonceForm.typeContratId;
+export const getTypeId =(state: RootState) => state.congeForm.typeId;
 
 export const getDiplome = (state: RootState) => state.jobCritere.diplome;
 export const getDomaine = (state: RootState) => state.jobCritere.domaine;

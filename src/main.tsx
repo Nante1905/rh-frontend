@@ -35,6 +35,7 @@ import CongeTabRoot from "./components/conge/container/conge-tab-root/conge-tab-
 import EmpCongeCalendarRoot from "./components/conge/container/emp-conge-calendar-root/emp-conge-calendar-root.component.tsx";
 import SignOutComponent from "./components/auth/signout/SignOut.component.tsx";
 import NotFoundComponent from "./components/error/404/not-found.component.tsx";
+import EmployeProfile from "./components/FicheEmploye/Fiche.component";
 
 const routes = createBrowserRouter([
   {
@@ -101,6 +102,10 @@ const routes = createBrowserRouter([
             <ListCongeRoot />
           </Provider>
         ),
+      },
+      {
+        path: "fiche",
+        element: <EmployeProfile />,
       },
     ],
   },

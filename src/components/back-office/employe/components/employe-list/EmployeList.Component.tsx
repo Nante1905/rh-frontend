@@ -8,6 +8,7 @@ import {
   frFR,
 } from "@mui/x-data-grid";
 import { Chip } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const EmployeList = (props: any) => {
   const columns: GridColDef[] = [
@@ -106,6 +107,16 @@ const EmployeList = (props: any) => {
           //   pageSizeOptions={[5, 10]}
           // checkboxSelection
           localeText={frFR.components.MuiDataGrid.defaultProps.localeText}
+          onRowClick={(params) => {
+            const employe = params.row;
+            // Utilisez le composant Link pour diriger l'utilisateur vers la page EmployeDetails
+            // avec l'ID de l'employé
+            return (
+              <Link to={`/employe-details/${employe.id}`}>
+                <button>Voir les détails</button>
+              </Link>
+            );
+          }}
         />
       </div>
     </>
