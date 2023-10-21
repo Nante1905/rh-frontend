@@ -3,7 +3,12 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { TypeContrat } from "../../types/JobCriteria";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const TypeContratSelect = ({ option, selectLabel, selectValue, onChange }: any) => {
+const TypeContratSelect = ({
+  option,
+  selectLabel,
+  selectValue,
+  onChange,
+}: any) => {
   console.log(option);
 
   // const sarobidy = () => {
@@ -23,14 +28,12 @@ const TypeContratSelect = ({ option, selectLabel, selectValue, onChange }: any) 
       >
         {option.map((e: TypeContrat) => (
           <MenuItem key={e.id} value={e.id}>
-            {e.type_contrat}
+            {e.nom}
           </MenuItem>
         ))}
       </Select>
     </FormControl>
   );
 };
-
-
 
 export default TypeContratSelect;

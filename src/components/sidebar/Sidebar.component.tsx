@@ -17,6 +17,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import "./Sidebar.component.scss";
 import decodeToken from "../../services/token/TokenService";
 import { useNavigate } from "react-router-dom";
@@ -83,6 +84,11 @@ const navItems = {
       link: "/job/create",
       icon: <MailIcon />,
     },
+    {
+      text: "Liste du personnel",
+      link: "/admin/employes",
+      icon: <MailIcon />,
+    },
   ],
   client: [
     {
@@ -96,9 +102,9 @@ const navItems = {
       icon: <MailIcon />,
     },
     {
-      text: "Mes entretiens",
-      link: "",
-      icon: <MailIcon />,
+      text: "Notifications",
+      link: "/client/notifications",
+      icon: <NotificationsActiveIcon />,
     },
   ],
 };

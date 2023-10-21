@@ -9,6 +9,7 @@ import { http } from "../../../../interceptors/requestInterceptor";
 
 const CandidatureList = (props: any) => {
   const idJob = props.idJob;
+  const jobTitle = props.job;
   // Status 0 : postulé
   // Status 3 : sélectioin
   // Status 5 : test
@@ -47,7 +48,13 @@ const CandidatureList = (props: any) => {
       ) : (
         <>
           {candidatures.map((c, i) => (
-            <CandidatureCard key={`c_${i}`} candidature={c} status={status} />
+            <CandidatureCard
+              key={`c_${i}`}
+              candidature={c}
+              status={status}
+              job={jobTitle}
+              idJob={idJob}
+            />
           ))}
         </>
       )}

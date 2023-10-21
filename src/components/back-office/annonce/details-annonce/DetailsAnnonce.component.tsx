@@ -81,6 +81,7 @@ const DetailsAnnonce = (props: any) => {
           {tab == "4" && (
             <CandidatureList
               idJob={idJob}
+              job={annonce?.title}
               status={CANDIDATURE_STATUS.entretien}
             />
           )}
