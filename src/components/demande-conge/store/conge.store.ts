@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { congeSlice } from "./conge.reducer";
+import { congeSlice } from "./conge.reducer.ts";
 
 export const congeStore = configureStore({
   reducer: {

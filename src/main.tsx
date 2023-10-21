@@ -16,7 +16,7 @@ import BackOffice from "./pages/backoffice/BackOffice.tsx";
 import HomeBackOffice from "./components/back-office/home/Home-back-office.component.tsx";
 import DetailsAnnonce from "./components/back-office/annonce/details-annonce/DetailsAnnonce.component.tsx";
 
-import SignIn from "./components/auth/SignIn.component.tsx";
+import SignIn from "./components/auth/signin/SignIn.component.tsx";
 import FrontOffice from "./pages/frontoffice/FrontOffice.tsx";
 import HomePage from "./pages/frontoffice/home/HomePage.tsx";
 import QcmComponent from "./components/qcm/QcmComponent.tsx";
@@ -33,6 +33,8 @@ import Protected from "./components/guards/auth/protected.routes.tsx";
 import AdminLevel from "./components/guards/admin/admin.routes.tsx";
 import CongeTabRoot from "./components/conge/container/conge-tab-root/conge-tab-root.component.tsx";
 import EmpCongeCalendarRoot from "./components/conge/container/emp-conge-calendar-root/emp-conge-calendar-root.component.tsx";
+import SignOutComponent from "./components/auth/signout/SignOut.component.tsx";
+import NotFoundComponent from "./components/error/404/not-found.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -64,6 +66,10 @@ const routes = createBrowserRouter([
         element: <SignIn />,
       },
       {
+        path: "/logout",
+        element: <SignOutComponent />,
+      },
+      {
         path: "/annonce",
         element: <AnnonceRoot />,
       },
@@ -83,10 +89,7 @@ const routes = createBrowserRouter([
         path: "test/calendar-all",
         element: <RhCongeCalendarRoot />,
       },
-      {
-        path: "test/calendar-auth",
-        element: <EmpCongeCalendarRoot />,
-      },
+
       {
         path: "test/conges",
         element: <CongeTabRoot />,
@@ -129,6 +132,22 @@ const routes = createBrowserRouter([
         path: "contrats/:id",
         element: <ContratRead />,
       },
+      {
+        path: "conges",
+        element: <CongeTabRoot />,
+      },
+      {
+        path: "demandes",
+        element: (
+          <Provider store={congeStore}>
+            <ListCongeRoot />
+          </Provider>
+        ),
+      },
+      {
+        path: "conges/calendar",
+        element: <EmpCongeCalendarRoot />,
+      },
     ],
   },
   {
@@ -165,7 +184,19 @@ const routes = createBrowserRouter([
           </Provider>
         ),
       },
+      {
+        path: "employes",
+        element: <EmployeListRoot />,
+      },
+      {
+        path: "conges/calendar",
+        element: <RhCongeCalendarRoot />,
+      },
     ],
+  },
+  {
+    path: "/*",
+    element: <NotFoundComponent />,
   },
 ]);
 

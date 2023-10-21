@@ -12,12 +12,12 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import "./Signin.component.scss";
-import { Auth } from "../../types/AuthInterface";
-import { authenticate } from "../../services/authentication.service";
+import { Auth } from "../../../types/AuthInterface";
+import { authenticate } from "../../../services/authentication.service";
 import { useState } from "react";
 import { Alert, Snackbar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import decodeToken from "../../services/token/TokenService";
+import decodeToken from "../../../services/token/TokenService";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();

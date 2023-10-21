@@ -4,23 +4,25 @@ import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import "./Sidebar.component.scss";
 import decodeToken from "../../services/token/TokenService";
-import { useNavigate } from "react-router-dom";
+import SideBarItem from "./sidebar-item/sidebar-item.component";
+import {
+  CalendarMonth,
+  Description,
+  DoNotDisturbOnTotalSilence,
+  Group,
+  Logout,
+} from "@mui/icons-material";
 
 const drawerWidth = 240;
 
@@ -43,26 +45,26 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   }),
 }));
 
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
+// interface AppBarProps extends MuiAppBarProps {
+//   open?: boolean;
+// }
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})<AppBarProps>(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
+// const AppBar = styled(MuiAppBar, {
+//   shouldForwardProp: (prop) => prop !== "open",
+// })<AppBarProps>(({ theme, open }) => ({
+//   transition: theme.transitions.create(["margin", "width"], {
+//     easing: theme.transitions.easing.sharp,
+//     duration: theme.transitions.duration.leavingScreen,
+//   }),
+//   ...(open && {
+//     width: `calc(100% - ${drawerWidth}px)`,
+//     marginLeft: `${drawerWidth}px`,
+//     transition: theme.transitions.create(["margin", "width"], {
+//       easing: theme.transitions.easing.easeOut,
+//       duration: theme.transitions.duration.enteringScreen,
+//     }),
+//   }),
+// }));
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -72,49 +74,83 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-const navItems = {
-  admin: [
-    {
-      text: "Annonces",
-      link: "/admin",
-      icon: <InboxIcon />,
-    },
-    {
-      text: "Créer une annonce",
-      link: "/job/create",
-      icon: <MailIcon />,
-    },
-    {
-      text: "Liste du personnel",
-      link: "/admin/employes",
-      icon: <MailIcon />,
-    },
-  ],
-  client: [
-    {
-      text: "Annonces",
-      link: "/client",
-      icon: <InboxIcon />,
-    },
-    {
-      text: "Mes candidatures",
-      link: "/client/candidatures",
-      icon: <MailIcon />,
-    },
-    {
-      text: "Notifications",
-      link: "/client/notifications",
-      icon: <NotificationsActiveIcon />,
-    },
-  ],
-};
+const navItems = [
+  {
+    authorization: "ADMIN",
+    text: "Annonces",
+    link: "/admin",
+    icon: <InboxIcon />,
+  },
+  {
+    authorization: "ADMIN",
+    text: "Créer une annonce",
+    link: "/job/create",
+    icon: <MailIcon />,
+  },
+  {
+    authorization: "PUBLIC EMPLOYE",
+    text: "Annonces",
+    link: "/client",
+    icon: <InboxIcon />,
+  },
+  {
+    authorization: "PUBLIC EMPLOYE",
+    text: "Mes candidatures",
+    link: "/client/candidatures",
+    icon: <MailIcon />,
+  },
+  {
+    authorization: "PUBLIC EMPLOYE",
+    text: "Notifications",
+    link: "/client/notifications",
+    icon: <NotificationsActiveIcon />,
+  },
+  {
+    authorization: "ADMIN",
+    text: "Liste du personnel",
+    link: "/admin/employes",
+    icon: <Group />,
+  },
+  {
+    authorization: "EMPLOYE",
+    text: "Mes Congés",
+    link: "/client/conges",
+    icon: <DoNotDisturbOnTotalSilence />,
+  },
+  {
+    authorization: "EMPLOYE",
+    text: "Liste demandes de congé",
+    link: "/client/demandes",
+    icon: <Description />,
+  },
+  {
+    authorization: "EMPLOYE",
+    text: "Calendrier de congé",
+    link: "/client/conges/calendar",
+    icon: <CalendarMonth />,
+  },
+  {
+    authorization: "ADMIN",
+    text: "Calendrier de congé RH",
+    link: "/admin/conges/calendar",
+    icon: <CalendarMonth />,
+  },
+
+  {
+    authorization: "*",
+    text: "Se deconnecter",
+    link: "/logout",
+    icon: <Logout />,
+  },
+];
 
 const Sidebar = (props: any) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const navigate = useNavigate();
-  const userName = decodeToken().sub;
-  const role: string = props.role;
+  // const navigate = useNavigate();
+  const userName = decodeToken().nom;
+  const position = decodeToken().position;
+  // const role: string = props.role;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -127,17 +163,8 @@ const Sidebar = (props: any) => {
   const generateContent = () => {
     return (
       <List>
-        {navItems[role as string].map((item, index) => (
-          <ListItem
-            key={`nav_${index}`}
-            disablePadding
-            onClick={() => navigate(item.link)}
-          >
-            <ListItemButton>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.text} />
-            </ListItemButton>
-          </ListItem>
+        {navItems.map((item, index) => (
+          <SideBarItem key={index} route={item} />
         ))}
       </List>
     );
@@ -174,7 +201,7 @@ const Sidebar = (props: any) => {
         <DrawerHeader className="navbar_header">
           <div className="user_info">
             <h3>{userName}</h3>
-            <p>Poste</p>
+            <p>{position}</p>
           </div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
