@@ -93,6 +93,10 @@ const EmployeList = (props: any) => {
       <div className="table-container">
         <DataGrid
           rows={emps}
+          rowHeight={130}
+          rowSpacingType="border"
+          // getRowHeight={() => "auto"}
+          // getEstimatedRowHeight={() => 300}
           columns={columns}
           initialState={{
             pagination: {
