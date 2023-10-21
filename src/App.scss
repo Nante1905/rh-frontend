@@ -1,29 +1,31 @@
-@import './variables.module.scss';
+@import "./variables.module.scss";
 
 /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
-
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #80808070;
-    border-radius: 6px;
+  background: #80808070;
+  border-radius: 6px;
 }
 
 .div-success {
-    background-color: $success !important;
-    color: white !important;
-
+  background-color: $success !important;
+  color: white !important;
 }
 
 .div-danger {
-    background-color: $danger !important;
-    color: white !important;
+  background-color: $danger !important;
+  color: white !important;
+}
+
+.warning {
+  color: $warning !important;
 }

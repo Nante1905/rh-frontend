@@ -11,6 +11,7 @@ import { Dayjs } from "dayjs";
 import "./contrat-form.components.scss";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import {
+  setCategorie,
   setDebut,
   setFin,
   setSalaireBrut,
@@ -127,6 +128,7 @@ const ContratForm = (props) => {
                 selectLabel="Categorie"
                 option={categories}
                 required={false}
+                onChange={(event) => dispatch(setCategorie(event.target.value))}
               />
             </div>
             <div className="form_avantages">

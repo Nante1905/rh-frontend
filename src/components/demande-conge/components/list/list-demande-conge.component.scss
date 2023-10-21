@@ -1,0 +1,18 @@
+@import "./../../../../variables.module.scss";
+.list-demande-conge {
+  .table-head {
+    th {
+      font-weight: bold;
+    }
+    tr {
+      border-top: solid 2px $theme-color;
+      border-bottom: solid 2px $theme-color;
+    }
+  }
+
+  &_actions {
+    display: flex !important;
+    justify-content: space-evenly !important;
+    flex-wrap: wrap;
+  }
+}

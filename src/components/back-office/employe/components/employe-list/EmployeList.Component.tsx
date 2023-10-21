@@ -20,9 +20,10 @@ const EmployeList = (props: any) => {
         `${params.row.nom || ""} ${params.row.prenom || ""}`,
     },
     { field: "genre", headerName: "Genre", width: 90 },
-    { field: "age", headerName: "Age", type: "number", width: 100 },
-    { field: "poste", headerName: "Poste", width: 200 },
-    { field: "contrat", headerName: "Type de contrat", width: 150 },
+    { field: "age", headerName: "Age", type: "number", width: 30 },
+    { field: "poste", headerName: "Poste", width: 150 },
+    { field: "service", headerName: "Service" },
+    { field: "contrat", headerName: "Type de contrat", width: 100 },
     {
       field: "anciennete",
       headerName: "Ancienneté",
