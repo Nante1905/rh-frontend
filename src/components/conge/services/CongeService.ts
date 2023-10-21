@@ -7,3 +7,7 @@ export const findMyConges = () => {
 export const findValidConges = () => {
     return http.get('/conges/valides');
 }
+
+export const findValidCongesUnderAuth = () => {
+    return http.get('/conges/valides/services');
+}

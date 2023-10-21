@@ -32,6 +32,7 @@ import { congeStore } from "./components/demande-conge/store/conge.store.ts";
 import Protected from "./components/guards/auth/protected.routes.tsx";
 import AdminLevel from "./components/guards/admin/admin.routes.tsx";
 import CongeTabRoot from "./components/conge/container/conge-tab-root/conge-tab-root.component.tsx";
+import EmpCongeCalendarRoot from "./components/conge/container/emp-conge-calendar-root/emp-conge-calendar-root.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -79,8 +80,12 @@ const routes = createBrowserRouter([
         element: <NavbarBackOffice />,
       },
       {
-        path: "calendar",
+        path: "test/calendar-all",
         element: <RhCongeCalendarRoot />,
+      },
+      {
+        path: "test/calendar-auth",
+        element: <EmpCongeCalendarRoot />,
       },
       {
         path: "test/conges",

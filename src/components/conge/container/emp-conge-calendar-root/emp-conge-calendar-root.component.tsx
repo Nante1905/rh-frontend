@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import "./rh-conge-calendar-root.component.scss";
+import "../rh-conge-calendar-root/rh-conge-calendar-root.component.scss";
 import { CongeMin } from "../../types/Conge";
-import { findValidConges } from "../../services/CongeService";
+import { findValidCongesUnderAuth } from "../../services/CongeService";
 import CongeCalendarRoot from "../conge-calendar-root/conge-calendar-root.component";
 
-const RhCongeCalendarRoot = () => {
+const EmpCongeCalendarRoot = () => {
   const [conges, setConges] = useState<CongeMin[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    findValidConges()
+    findValidCongesUnderAuth()
       .then((res) => {
         setConges(res.data);
       })
@@ -22,4 +22,4 @@ const RhCongeCalendarRoot = () => {
   return <CongeCalendarRoot conges={conges} error={error} />;
 };
 
-export default RhCongeCalendarRoot;
+export default EmpCongeCalendarRoot;
