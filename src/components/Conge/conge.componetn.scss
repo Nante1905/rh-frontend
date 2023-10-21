@@ -1,0 +1,29 @@
+.demande-conge {
+    background-color: aliceblue;
+ 
+}
+&_title {
+    text-align: center;
+    padding: 3% 0%;
+}
+&_typeConge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    margin-block: 3%;
+}
+&_date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    margin-block: 3%;
+}
+&_form-control{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    margin-block: 3%;
+}

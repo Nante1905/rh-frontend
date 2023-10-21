@@ -90,3 +90,7 @@ export interface JobDetail {
   typeContrat: TypeContrat;
   ville: Ville;
 }
+export interface TypeConge {
+  id?:number;
+  nom?:string;
+}
