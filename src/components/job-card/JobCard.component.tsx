@@ -82,8 +82,9 @@ const JobCard = (props: any) => {
           </div>
           <div className="job-card-item">
             {" "}
-            <strong>Salaire: </strong> Entre {annonce.sal_min} Ar et{" "}
-            {annonce.sal_max} Ar
+            <strong>Salaire: </strong> Entre{" "}
+            {(annonce.sal_min as number).toLocaleString()} Ar et{" "}
+            {(annonce.sal_max as number).toLocaleString()} Ar
           </div>
         </div>
         <div className="job-card-actions">
