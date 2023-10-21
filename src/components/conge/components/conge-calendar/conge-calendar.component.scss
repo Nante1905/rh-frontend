@@ -1,0 +1,16 @@
+.calendar {
+    height: 100vh;
+
+    .fc-media-screen {
+        width: 90%;
+        margin: auto;
+    }
+
+    .fc-view-container { 
+    overflow-x: scroll; 
+    }
+
+    .fc-event-main {
+        padding: 0.5rem;
+    }
+}

@@ -1,6 +1,6 @@
 import { findMyConges } from "../../services/CongeService";
 import { EtatConge } from "../../types/Conge";
-import CongeTab from "../conge-tab/Conge-tab.component";
+import CongeTab from "../../components/conge-tab/Conge-tab.component";
 import "./conge-tab-root.component.scss";
 import React, { useEffect, useState } from "react";
 

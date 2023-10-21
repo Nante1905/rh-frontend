@@ -20,6 +20,7 @@ import {
 import { ContratState } from "../../store/contrat.store";
 import { FormEvent } from "react";
 import { http } from "../../../../interceptors/requestInterceptor";
+import { useNavigate } from "react-router-dom";
 
 const ContratForm = (props) => {
   const poste: string = props?.poste;
@@ -29,6 +30,7 @@ const ContratForm = (props) => {
   const categories: Categorie[] = props.categories;
   const idJob = props.idJob;
   const job = props.job;
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const salaireBrut = useSelector(
@@ -61,6 +63,7 @@ const ContratForm = (props) => {
       .post("/contrats", form)
       .then((res) => {
         console.log(res);
+        navigate("/admin/employes");
       })
       .catch((err) => {
         console.log(err);

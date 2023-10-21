@@ -15,6 +15,8 @@ interface Etat {
 export interface CongeMin {
     id: number,
     idEmp: number,
+    employe: string,
+    service: string,
     motif: string,
     type: TypeConge,
     codeStatus: number,
