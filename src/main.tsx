@@ -28,6 +28,7 @@ import { contratStore } from "./components/contrat/store/contrat.store.ts";
 import Notification from "./components/front-office/notification/Notification.component.tsx";
 import ContratRead from "./components/front-office/fo-contrat/components/contrat-read/ContratRead.component.tsx";
 import EmployeListRoot from "./components/back-office/employe/container/employe-list-root.component.tsx";
+import CongeTabRoot from "./components/conge/components/conge-tab-root/conge-tab-root.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -75,8 +76,12 @@ const routes = createBrowserRouter([
         element: <NavbarBackOffice />,
       },
       {
-        path: "test",
+        path: "calendar",
         element: <Calendar />,
+      },
+      {
+        path: "test/conges",
+        element: <CongeTabRoot />,
       },
     ],
   },

@@ -1,8 +1,16 @@
-import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridColDef,
+  GridValueGetterParams,
+  frFR,
+} from "@mui/x-data-grid";
 import "./Conge-card.component.scss";
 import React from "react";
+import { Card, Chip, List, ListItem } from "@mui/material";
+import { EtatConge } from "../../types/Conge";
 
-const CongeTab = () => {
+const CongeTab = (props) => {
+  const conge: EtatConge = props.conge;
   const columns: GridColDef[] = [
     // { field: "id", headerName: "ID", width: 70 },
     { field: "motif", headerName: "Motif", width: 130, sortable: false },
@@ -10,43 +18,64 @@ const CongeTab = () => {
       field: "type",
       headerName: "Type",
       sortable: false,
-      width: 160,
-      valueGetter: (params: GridValueGetterParams) => `${params.row.type.nom}`,
+      width: 250,
+      valueGetter: (params: GridValueGetterParams) =>
+        `${params.row.type.nom} (${
+          params.row.type.deductible ? "Déductible" : "Non déductible"
+        }) `,
     },
+    { field: "debut", headerName: "Debut", width: 130 },
+    { field: "fin", headerName: "Fin", width: 130 },
     {
       field: "status",
       headerName: "Status",
       width: 130,
-      renderCell(params) {},
+      renderCell: (params) => {
+        const classes = {
+          "0": "div-warning",
+          "-5": "div-danger",
+          "5": "div-success",
+        };
+        return (
+          <Chip
+            label={params.row.status}
+            className={classes[params.row.codeStatus]}
+          />
+        );
+      },
     },
   ];
 
-  const rows = [
-    { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-    { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-    { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-    { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-    { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-    { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-    { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-  ];
-
   return (
-    <div className="table-container">
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
-          },
-        }}
-        pageSizeOptions={[5, 10]}
-        // checkboxSelection
-        localeText={frFR.components.MuiDataGrid.defaultProps.localeText}
-      />
+    <div className="conge_tab">
+      <Card className="conge_info">
+        <List>
+          <ListItem>
+            Nombre de congés cumulés depuis l'embauche:{"  "}
+            <strong> {conge.etat.cumul}</strong>
+          </ListItem>
+          <ListItem>
+            Nombre de congés pris: <strong> {conge.etat.consomme}</strong>
+          </ListItem>
+          <ListItem>
+            Reste: <strong> {conge.etat.reste}</strong>
+          </ListItem>
+        </List>
+      </Card>
+      <div className="table-container">
+        <DataGrid
+          rows={conge.conge}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 5 },
+            },
+          }}
+          pageSizeOptions={[5, 10]}
+          // checkboxSelection
+          localeText={frFR.components.MuiDataGrid.defaultProps.localeText}
+        />
+      </div>
     </div>
   );
 };
