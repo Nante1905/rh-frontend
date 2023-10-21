@@ -86,6 +86,14 @@ const routes = createBrowserRouter([
         path: "test/conges",
         element: <CongeTabRoot />,
       },
+      {
+        path: "test/demande-conges",
+        element: (
+          <Provider store={congeStore}>
+            <ListCongeRoot />
+          </Provider>
+        ),
+      },
     ],
   },
   {
