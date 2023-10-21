@@ -45,9 +45,7 @@ const JobCard = (props: any) => {
     } else if (status === undefined) {
       return <></>;
     } else {
-      return (
-        <Chip label={statusMap[status]} color="primary" variant="contained" />
-      );
+      return <Chip label={statusMap[status]} color="primary" />;
     }
   };
 

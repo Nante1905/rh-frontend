@@ -11,4 +11,6 @@ export interface EmployeTab {
   debutContrat: string;
   categorie: string;
   service: string;
+    presence: boolean
 }
+

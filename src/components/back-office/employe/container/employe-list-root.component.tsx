@@ -25,14 +25,17 @@ const EmployeListRoot = () => {
 
   const handleSubmit = (value: string) => {
     setLoad({ loaded: false, loading: true });
-    findEmployesByMission(value)
-      .then((res) => {
-        setEmps(res.data);
-        setLoad({ loaded: true, loading: false });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    setTimeout(() => {
+      findEmployesByMission(value)
+        .then((res) => {
+          console.log(res.data);
+          setEmps(res.data);
+          setLoad({ loaded: true, loading: false });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }, 1000);
   };
 
   const displayTable = () => {
