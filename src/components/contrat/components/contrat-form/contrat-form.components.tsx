@@ -131,9 +131,7 @@ const ContratForm = (props) => {
                 selectLabel="Categorie"
                 option={categories}
                 required={false}
-                onChange={(event) =>
-                  dispatch(setCategorie(event.target.value as number))
-                }
+                onChange={(event) => dispatch(setCategorie(event.target.value))}
               />
             </div>
             <div className="form_avantages">

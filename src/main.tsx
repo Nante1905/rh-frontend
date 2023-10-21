@@ -22,13 +22,16 @@ import HomePage from "./pages/frontoffice/home/HomePage.tsx";
 import QcmComponent from "./components/qcm/QcmComponent.tsx";
 import FoCandidature from "./components/front-office/candidature/foCandidature.component.tsx";
 import NavbarBackOffice from "./components/back-office/sidebar/NavbarBackOffice.tsx";
-import ContratFormRoot from "./components/contrat/container/contrat-form-root/contrat-form-root.component.tsx";
 import { contratStore } from "./components/contrat/store/contrat.store.ts";
 import Notification from "./components/front-office/notification/Notification.component.tsx";
 import ContratRead from "./components/front-office/fo-contrat/components/contrat-read/ContratRead.component.tsx";
 import EmployeListRoot from "./components/back-office/employe/container/employe-list-root.component.tsx";
-import CongeTabRoot from "./components/conge/container/conge-tab-root/conge-tab-root.component.tsx";
 import RhCongeCalendarRoot from "./components/conge/container/rh-conge-calendar-root/rh-conge-calendar-root.component.tsx";
+import ListCongeRoot from "./components/demande-conge/container/list-root/list-conge-root.container.tsx";
+import { congeStore } from "./components/demande-conge/store/conge.store.ts";
+import Protected from "./components/guards/auth/protected.routes.tsx";
+import AdminLevel from "./components/guards/admin/admin.routes.tsx";
+import CongeTabRoot from "./components/conge/container/conge-tab-root/conge-tab-root.component.tsx";
 
 const routes = createBrowserRouter([
   {
@@ -119,9 +122,13 @@ const routes = createBrowserRouter([
     path: "admin",
     element: (
       <Provider store={contratStore}>
-        <BackOffice>
-          <Outlet />
-        </BackOffice>
+        <Protected>
+          <AdminLevel>
+            <BackOffice>
+              <Outlet />
+            </BackOffice>
+          </AdminLevel>
+        </Protected>
       </Provider>
     ),
     children: [
@@ -137,15 +144,15 @@ const routes = createBrowserRouter([
         path: "employes",
         element: <EmployeListRoot />,
       },
+      {
+        path: "demande-conges",
+        element: (
+          <Provider store={congeStore}>
+            <ListCongeRoot />
+          </Provider>
+        ),
+      },
     ],
-  },
-  {
-    path: "test",
-    element: (
-      <Provider store={contratStore}>
-        <ContratFormRoot />
-      </Provider>
-    ),
   },
 ]);
 

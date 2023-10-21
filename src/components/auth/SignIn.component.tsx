@@ -39,6 +39,10 @@ export default function SignIn() {
       (token: string) => {
         sessionStorage.setItem("token", token);
         const roles: string = decodeToken()?.roles;
+        console.log(roles);
+        console.log(
+          token != null && (decodeToken()?.roles as string).includes("ADMIN")
+        );
 
         if (roles?.includes("ADMIN")) {
           navigate("/admin");
