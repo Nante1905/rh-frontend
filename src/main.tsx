@@ -28,6 +28,7 @@ import Notification from "./components/front-office/notification/Notification.co
 import ContratRead from "./components/front-office/fo-contrat/components/contrat-read/ContratRead.component.tsx";
 import EmployeListRoot from "./components/back-office/employe/container/employe-list-root.component.tsx";
 import EmployeProfile from "./components/FicheEmploye/Fiche.component";
+import DemandeConge from "./components/Conge/conge.component";
 
 const routes = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ const routes = createBrowserRouter([
       {
         path: "fiche",
         element: <EmployeProfile />,
+      },
+      {
+        path: "conge",
+        element: <DemandeConge />,
       },
     ],
   },

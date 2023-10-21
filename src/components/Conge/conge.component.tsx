@@ -16,11 +16,16 @@ import {
 import { http } from "../../interceptors/requestInterceptor";
 import TypeCongeSelect from "../form-annonce/job-requirement/type-conge-select/type-conge-select.component";
 import { TypeConge } from "../form-annonce/types/JobCriteria";
-import { getTypeId} from "../../../store/annonce/selector";
-import { Button, FormControlLabel, Radio, RadioGroup, SelectChangeEvent, TextField } from "@mui/material";
+import { getTypeId} from "../../store/annonce/selector";
+import { Button, FormControlLabel, Radio, SelectChangeEvent, TextField } from "@mui/material";
 import { ActionCreator } from "@reduxjs/toolkit";
-import axios, { Axios } from "axios";
-const Conge = () => {
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import './conge.component.scss';
+
+function DemandeConge () {
+
+  const navigate = useNavigate();
     const selectedTypeConge: number = useSelector(getTypeId);
     const dispatch = useDispatch();
     
@@ -160,13 +165,23 @@ const Conge = () => {
                         label="Fin_demi_journee"
                     />
                 </div>
-                <Button onClick={handleSuivant} type="submit" variant="contained">
+                <div className="demande-conge_next-button">
+                  <Button
+                    variant="outlined"
+                    onClick={() => {
+                      navigate("/");
+                    }}
+                  >
+                    Retour
+                  </Button>
+                  <Button onClick={handleSuivant} type="submit" variant="contained">
                     Suivant
-                </Button>
+                  </Button>
+                </div>
             </form>
         </div>
 
    );
 }
 
-export default Conge;
+export default DemandeConge;
