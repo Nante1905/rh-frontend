@@ -26,7 +26,6 @@ const JobCard = (props: any) => {
   const statusMap = ["En attente", "Test", "Entretien", "Embauche"];
 
   const navigate = useNavigate();
-  console.log("statuuus " + status);
 
   const renderStatusComponent = (status: number) => {
     if (status === 1) {

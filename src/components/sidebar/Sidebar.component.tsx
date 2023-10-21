@@ -113,7 +113,7 @@ const Sidebar = (props: any) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
-  const userName = decodeToken().sub;
+  const userName = decodeToken().name;
   const role: string = props.role;
 
   const handleDrawerOpen = () => {
@@ -174,7 +174,7 @@ const Sidebar = (props: any) => {
         <DrawerHeader className="navbar_header">
           <div className="user_info">
             <h3>{userName}</h3>
-            <p>Poste</p>
+            {/* <p>Poste</p> */}
           </div>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
