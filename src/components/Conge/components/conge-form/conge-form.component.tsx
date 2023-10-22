@@ -5,16 +5,22 @@ import {
   setDebut,
   setFin,
   setMotif,
+  setSendErr,
+  setSendErrMsg,
+  setSendSuccess,
+  setSendSuccessMsg,
   setType,
   setTypeCongeOptions,
   toggleDebutDemiJournee,
   toggleFinDemiJournee,
 } from "../../store/slice/conge.slice";
 import {
+  Alert,
   Button,
   Card,
   Checkbox,
   FormControlLabel,
+  Snackbar,
   TextField,
 } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
@@ -22,10 +28,22 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Dayjs } from "dayjs";
 import { CongeState } from "../../store/conge-form.store";
 import { FormEvent, useEffect } from "react";
-import { findTypeConge } from "../../services/CongeService";
+import { findTypeConge, sendDemande } from "../../services/CongeService";
 
 const CongeForm = () => {
   const dispatch = useDispatch();
+  const snackbarSuccessOpen = useSelector(
+    (state: CongeState) => state.conge.sendSuccess
+  );
+  const snackbarErrOpen = useSelector(
+    (state: CongeState) => state.conge.sendErr
+  );
+  const snackbarSuccessMsg = useSelector(
+    (state: CongeState) => state.conge.sendSuccessMsg
+  );
+  const snackbarErrMsg = useSelector(
+    (state: CongeState) => state.conge.sendErrMsg
+  );
 
   useEffect(() => {
     findTypeConge()
@@ -45,17 +63,27 @@ const CongeForm = () => {
     form = {
       ...form,
       type: {
-        id: form.type,
+        id: form.idType,
       },
     };
 
     console.log(form);
-    // sendDemande(form).then((res) => {
-    //     console.log(res.data);
-    // }).catch((err) => {
-    //     console.error(err);
-
-    // })
+    sendDemande(form)
+      .then((res) => {
+        const data = res.data;
+        if (data.OK) {
+          dispatch(setSendSuccess(true));
+          dispatch(setSendSuccessMsg(data.msg));
+        } else {
+          dispatch(setSendErr(true));
+          dispatch(setSendErrMsg(data.msg));
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        dispatch(setSendErr(true));
+        dispatch(setSendErrMsg(err.msg));
+      });
   };
 
   return (
@@ -133,6 +161,25 @@ const CongeForm = () => {
           </form>
         </div>
       </Card>
+      <Snackbar
+        open={snackbarSuccessOpen}
+        onClose={() => dispatch(setSendSuccess(false))}
+      >
+        <Alert
+          severity="success"
+          onClose={() => dispatch(setSendSuccess(false))}
+        >
+          {snackbarSuccessMsg}
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={snackbarErrOpen}
+        onClose={() => dispatch(setSendErr(false))}
+      >
+        <Alert severity="error" onClose={() => dispatch(setSendErr(false))}>
+          {snackbarErrMsg}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

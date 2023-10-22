@@ -122,9 +122,11 @@ const routes = createBrowserRouter([
   {
     path: "client",
     element: (
-      <FrontOffice>
-        <Outlet />
-      </FrontOffice>
+      <App>
+        <FrontOffice>
+          <Outlet />
+        </FrontOffice>
+      </App>
     ),
     children: [
       {
@@ -177,13 +179,15 @@ const routes = createBrowserRouter([
     path: "admin",
     element: (
       <Provider store={contratStore}>
-        <Protected>
-          <AdminLevel>
-            <BackOffice>
-              <Outlet />
-            </BackOffice>
-          </AdminLevel>
-        </Protected>
+        <App>
+          <Protected>
+            <AdminLevel>
+              <BackOffice>
+                <Outlet />
+              </BackOffice>
+            </AdminLevel>
+          </Protected>
+        </App>
       </Provider>
     ),
     children: [
