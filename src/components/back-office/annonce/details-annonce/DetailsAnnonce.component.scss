@@ -1,0 +1,19 @@
+@import '../../../../variables.module.scss';
+
+.details-annonce-container {
+    padding: 1%;
+
+    & > * {
+        width: 80%;
+        margin: auto;
+    }
+
+    .candidature-container {
+        .title {
+            text-align: center;
+        }
+    }
+    .btn {
+        background-color: $theme-color;
+    }
+}

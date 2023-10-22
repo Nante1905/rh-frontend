@@ -1,0 +1,40 @@
+@import '../../variables.module.scss';
+
+
+.job-card {
+    margin: auto;
+    width: 50%;
+    
+    .MuiChip-colorSuccess {
+        background-color: $success;
+    }
+
+    &-item {
+        margin: 2% 0%;
+    }
+
+    h2, h4 {
+        margin: 0;
+    }
+
+    .MuiCardHeader-content {
+        // // display: flex;
+        // align-items: center;
+        // justify-content: space-between;
+    }
+
+    .MuiListItem-gutters {
+        justify-content: space-between;
+        width: 80%;
+        margin: auto;
+    }
+
+    &-actions {
+        text-align: center;
+        padding: 2%;
+    }
+    button {
+        background-color: $theme-color;
+    }
+}
+

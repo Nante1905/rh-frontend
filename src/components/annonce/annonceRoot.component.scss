@@ -1,0 +1,39 @@
+.annonce-root {
+  h1 {
+    margin-block: 1rem;
+  }
+
+  .candidatures-btn {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+
+  &_container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    place-content: center;
+  }
+  .annonce-card {
+    padding-block: 2rem;
+    .job-card {
+      width: 80% !important;
+
+      .MuiListItem-gutters {
+        width: 100%;
+      }
+    }
+    .apply-btn {
+      padding-top: 1rem;
+      text-align: center;
+    }
+  }
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.dialog-root {
+  text-align: center !important;
+}

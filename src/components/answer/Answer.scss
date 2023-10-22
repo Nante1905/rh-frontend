@@ -1,0 +1,7 @@
+.answer {
+    display: flex;
+    align-items: center;
+    &__input {
+        width: 80%;
+    }
+}

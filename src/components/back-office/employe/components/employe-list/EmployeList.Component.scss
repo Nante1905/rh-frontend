@@ -1,0 +1,18 @@
+.title {
+    text-align: center;
+    padding: 0%;
+}
+
+.table-container {
+    width: fit-content;
+    margin: auto;
+    padding: 2%;
+
+    .MuiDataGrid-columnHeaders {
+        background-color: aliceblue;
+    }
+
+    .MuiDataGrid-cell {
+        white-space: normal !important;
+    }
+}

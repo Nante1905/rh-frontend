@@ -1,0 +1,59 @@
+.main__container {
+  background-color: aliceblue;
+}
+
+.job-info {
+  width: 50%;
+  margin: auto;
+
+  &_flex {
+    display: flex;
+    justify-content: space-around;
+    margin: 5% 0%;
+  }
+
+  form {
+    padding: 8%;
+    margin-block: 2%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: white;
+  }
+
+  &_title {
+    text-align: center;
+    padding: 5%;
+  }
+  &_head {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5%;
+  }
+  &_hour {
+    display: grid;
+    place-items: center;
+    margin-bottom: 10%;
+    gap: 5%;
+  }
+  &_age{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    margin-bottom: 5%;
+    margin-top: 40px;
+  }
+  &_salary {
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+  }
+  &_next-button {
+    text-align: right;
+    margin-top: 10%;
+    // button {
+    //   background-color: red;
+    // }
+    // button:hover {
+    //   background-color: rgb(59, 0, 0);
+    // }
+  }
+}

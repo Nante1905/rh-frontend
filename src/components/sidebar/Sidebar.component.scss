@@ -1,0 +1,35 @@
+@import "../../variables.module.scss";
+
+.toggle-container {
+    width: 4rem;
+    padding: 1rem;
+    height: 100vh;
+    position: fixed;
+    background: $theme-color;
+
+    button {
+        margin: auto;
+    }
+}
+
+.navbar_header {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    padding: 10% 2%;
+    flex-direction: row;
+    justify-content: space-between;
+    background: $theme-color;
+
+
+    .user_info {
+        padding-left: 5%;
+        width: 80%;
+        word-wrap: break-word;
+    }
+}
+
+.main-content {
+    padding-right: 0rem !important;
+    padding-left: 4rem !important;
+}

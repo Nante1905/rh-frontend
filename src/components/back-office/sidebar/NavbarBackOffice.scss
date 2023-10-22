@@ -1,0 +1,23 @@
+@import '../../../variables.module.scss';
+
+.navbar-container {
+    width: 20rem;
+    height: 100vh;
+    .MuiPaper-root {
+        background-color: $theme-color;
+    }
+    &-toolbar {
+        padding: 0% !important;
+        flex-direction: column;
+    }
+    &-list {
+        width: 100%;
+    }
+    &> * {
+        height: 100%;
+    }
+
+    a {
+        color: inherit;
+    }
+}

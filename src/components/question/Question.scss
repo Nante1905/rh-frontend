@@ -1,0 +1,61 @@
+.card__container {
+    width: 60%;
+}
+
+.card {
+    .questions {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+    }
+    
+    .delete {
+        color: #e44a4a;
+    }
+    
+    .circle {
+        width: 4rem;
+        aspect-ratio: 1/1;
+        display: grid;
+        place-content: center;
+        font-weight: bolder;
+        font-size: 20px;
+        border-radius: 50%;
+        background-color: #317B93;
+        color: white;
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    }
+
+    .input {
+        &__question {
+            width: 50%;
+        }
+
+        &__coeff {
+            width: 10%;
+        }
+    }
+
+    .answers {
+        &__container {
+            width: 50%;
+            margin: 2% auto;
+        }
+
+        &__add {
+
+            .icon {
+                color: #646cff;
+                cursor: pointer;
+            }
+
+            display: flex;
+            align-items: center;
+            gap: 2%;
+        }
+
+    }
+
+    
+}
