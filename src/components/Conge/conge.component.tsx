@@ -4,6 +4,7 @@ import { Dayjs } from "dayjs";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+    setDemandeId,
     setEmployeId,
     setDebut,
     setDebut_demi_journee,
@@ -97,9 +98,9 @@ function DemandeConge () {
 
   const handleSuivant = (event: any) => {
     event.preventDefault();
-    navigate("/questionnaire");
-  };
 
+  }
+  
    return (
 
         <div className="demande-conge bg__blue">

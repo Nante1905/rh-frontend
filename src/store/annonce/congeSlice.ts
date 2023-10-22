@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 export interface CongeForm {
+    demandeId:number;
     employeId:number;
     debut:Date;
     debut_demi_journee:boolean; 
@@ -13,6 +14,7 @@ export interface CongeForm {
     status:number;
 }
 const initialState: CongeForm = {
+    demandeId: 0,
     employeId: 0,
     debut: new Date(),
     debut_demi_journee: false,
@@ -27,6 +29,9 @@ const initialState: CongeForm = {
     name: "congeForm",
     initialState,
     reducers: {
+        setDemandeId:(state, action) => {
+            state.setDemandeId = action.payload;
+        },
         setEmployeId: (state, action) => {
             state.setEmployeId = action.payload;
         },
@@ -55,6 +60,7 @@ const initialState: CongeForm = {
   });
 
 export const {
+    setDemandeId,
     setEmployeId,
     setDebut,
     setDebut_demi_journee,
