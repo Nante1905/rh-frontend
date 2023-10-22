@@ -11,3 +11,11 @@ export const findValidConges = () => {
 export const findValidCongesUnderAuth = () => {
     return http.get('/conges/valides/services');
 }
+
+export const findTypeConge = () => {
+    return http.get('/conges/types');
+}
+
+export const sendDemande = (form: any) => {
+    return http.post('/conges', form);
+}

@@ -6,11 +6,13 @@ import {
 } from "@mui/x-data-grid";
 import "./Conge-card.component.scss";
 import React from "react";
-import { Card, Chip, List, ListItem } from "@mui/material";
+import { Button, Card, Chip, List, ListItem } from "@mui/material";
 import { EtatConge } from "../../types/Conge";
+import { useNavigate } from "react-router-dom";
 
 const CongeTab = (props) => {
   const conge: EtatConge = props.conge;
+  const navigate = useNavigate();
   const columns: GridColDef[] = [
     // { field: "id", headerName: "ID", width: 70 },
     { field: "motif", headerName: "Motif", width: 130, sortable: false },
@@ -62,6 +64,12 @@ const CongeTab = (props) => {
           </ListItem>
         </List>
       </Card>
+      <Button
+        variant="contained"
+        onClick={() => navigate("/client/conges-form")}
+      >
+        Demande de congés
+      </Button>
       <div className="table-container">
         <DataGrid
           rows={conge.conge}

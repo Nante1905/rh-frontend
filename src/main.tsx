@@ -36,6 +36,8 @@ import EmpCongeCalendarRoot from "./components/conge/container/emp-conge-calenda
 import SignOutComponent from "./components/auth/signout/SignOut.component.tsx";
 import NotFoundComponent from "./components/error/404/not-found.component.tsx";
 import EmployeProfile from "./components/FicheEmploye/Fiche.component";
+import CongeForm from "./components/conge/components/conge-form/conge-form.component.tsx";
+import { congeFormStore } from "./components/conge/store/conge-form.store.ts";
 
 const routes = createBrowserRouter([
   {
@@ -96,6 +98,14 @@ const routes = createBrowserRouter([
         element: <CongeTabRoot />,
       },
       {
+        path: "test/conges-form",
+        element: (
+          <Provider store={congeFormStore}>
+            <CongeForm />
+          </Provider>
+        ),
+      },
+      {
         path: "test/demande-conges",
         element: (
           <Provider store={congeStore}>
@@ -140,6 +150,14 @@ const routes = createBrowserRouter([
       {
         path: "conges",
         element: <CongeTabRoot />,
+      },
+      {
+        path: "conges-form",
+        element: (
+          <Provider store={congeFormStore}>
+            <CongeForm />
+          </Provider>
+        ),
       },
       {
         path: "demandes",
